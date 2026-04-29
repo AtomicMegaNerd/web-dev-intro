@@ -12,7 +12,6 @@ body {
   grid-area: nav-header;
   background-color: maroon;
   padding: 10px;
-  margin: 5px;
   color: white;
   font-size: 2em;
 }
@@ -21,7 +20,6 @@ body {
   grid-area: main-body;
   background-color: mediumslateblue;
   padding: 10px;
-  margin: 5px;
   color: white;
 }
 
@@ -29,7 +27,6 @@ body {
   grid-area: nav-side;
   background-color: olivedrab;
   padding: 10px;
-  margin: 5px;
   color: white;
 }
 
@@ -37,14 +34,15 @@ body {
   grid-area: footer;
   background-color: maroon;
   padding: 10px;
-  margin: 5px;
   color: white;
 }
 
 .my-page {
   display: grid;
+  row-gap: 5px;
+  column-gap: 5px;
   grid-template-areas:
     "nav-header nav-header  nav-header  nav-side"
-    "main-body  main-body   .           nav-side"
+    "main-body  main-body   main-body   nav-side"
     "footer     footer      footer      footer";
 }
