@@ -1,3 +1,8 @@
+* {
+  /* Include the border when measuring widths, content-box is the default */
+  box-sizing: border-box;
+}
+
 .grid {
   display: grid;
   /* 1fr stands for 1 fraction unit. It represents a share of the available space in a grid

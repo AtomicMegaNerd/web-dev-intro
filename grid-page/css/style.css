@@ -1,0 +1,50 @@
+* {
+  /* Include the border when measuring widths, content-box is the default */
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Helvetica-Neue", "Arial", "sans-serif";
+  background-color: black;
+}
+
+.my-page-header {
+  grid-area: nav-header;
+  background-color: maroon;
+  padding: 10px;
+  margin: 5px;
+  color: white;
+  font-size: 2em;
+}
+
+.my-page-body {
+  grid-area: main-body;
+  background-color: mediumslateblue;
+  padding: 10px;
+  margin: 5px;
+  color: white;
+}
+
+.my-page-sidebar {
+  grid-area: nav-side;
+  background-color: olivedrab;
+  padding: 10px;
+  margin: 5px;
+  color: white;
+}
+
+.my-page-footer {
+  grid-area: footer;
+  background-color: maroon;
+  padding: 10px;
+  margin: 5px;
+  color: white;
+}
+
+.my-page {
+  display: grid;
+  grid-template-areas:
+    "nav-header nav-header  nav-header  nav-side"
+    "main-body  main-body   .           nav-side"
+    "footer     footer      footer      footer";
+}
