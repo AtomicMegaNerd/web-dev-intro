@@ -9,22 +9,22 @@
         /* Include the border when measuring widths, content-box is the default */
         box-sizing: border-box;
       }
+
+      h1.main-title {
+        color: crimson;
+        font-family: "Helvetica Neue", "Arial", "sans-serif";
+        font-size: 3em;
+      }
+
       .flex-container {
-        display: flex;
+        display: flex; /* Must be declared in parent for flex to work */
         width: 100%;
         margin-top: 30px;
         margin-bottom: 30px;
+        height: 400px;
         border: 1px dotted grey;
       }
-      .jc-right {
-        justify-content: flex-end;
-      }
-      .reverse {
-        flex-direction: row-reverse;
-      }
-      .column {
-        flex-direction: column;
-      }
+
       .box-1 {
         background-color: crimson;
         color: white;
@@ -33,6 +33,7 @@
         height: 200px;
         border: 1px solid black;
       }
+
       .box-2 {
         background-color: darkolivegreen;
         color: white;
@@ -41,6 +42,7 @@
         height: 100px;
         border: 1px solid black;
       }
+
       .box-3 {
         background-color: darkslateblue;
         color: white;
@@ -49,34 +51,127 @@
         height: 300px;
         border: 1px solid black;
       }
-      h1.main-title {
-        color: crimson;
-        font-family: "Helvetica Neue", "Arial", "sans-serif";
-        font-size: 3em;
+
+      /* Flex direction */
+      /* Reverses the order of items along the main axis */
+      .reverse {
+        flex-direction: row-reverse;
+      }
+      /* Stacks items vertically instead of horizontally */
+      .column {
+        flex-direction: column;
+      }
+
+      /* Justify Content - controls horizontal alignment of items */
+      /* Aligns items to the end (right) of the container */
+      .jc-right {
+        justify-content: flex-end;
+      }
+      /* Centers items along the main axis */
+      .jc-center {
+        justify-content: center;
+      }
+      /* Equal space between items, none on the edges */
+      .jc-space-between {
+        justify-content: space-between;
+      }
+      /* Equal space around each item, including the edges */
+      .jc-space-around {
+        justify-content: space-around;
+      }
+
+      /* Align Items - controls vertical alignment of items */
+      /* Centers items along the cross axis */
+      .ai-center {
+        align-items: center;
+      }
+      /* Stretches items to fill the container height (requires no explicit height on items) */
+      .ai-stretch {
+        align-items: stretch;
+      }
+      /* Removes explicit height so ai-stretch can take effect */
+      .no-height {
+        height: unset;
+      }
+      /* Flex grow - items expand to fill remaining space proportionally */
+      .ai-grow {
+        /* nothing necessary here */
+      }
+      .ai-grow .box-1 {
+        flex-grow: 1;
+        width: 0;
+      }
+      .ai-grow .box-2 {
+        flex-grow: 5;
+        width: 0;
+      }
+      .ai-grow .box-3 {
+        flex-grow: 10;
+        width: 0;
       }
     </style>
   </head>
   <body>
     <h1 class="main-title">Fun with CSS</h1>
+    <!-- Default: items align to the top-left (flex-start) -->
     <div class="flex-container">
       <div class="box-1">1</div>
       <div class="box-2">2</div>
       <div class="box-3">3</div>
     </div>
+    <!-- justify-content: flex-end — items pushed to the right -->
     <div class="flex-container jc-right">
       <div class="box-1">1</div>
       <div class="box-2">2</div>
       <div class="box-3">3</div>
     </div>
+    <!-- justify-content: center — items centered horizontally -->
+    <div class="flex-container jc-center">
+      <div class="box-1">1</div>
+      <div class="box-2">2</div>
+      <div class="box-3">3</div>
+    </div>
+    <!-- justify-content: space-between — equal gaps between items, flush to edges -->
+    <div class="flex-container jc-space-between">
+      <div class="box-1">1</div>
+      <div class="box-2">2</div>
+      <div class="box-3">3</div>
+    </div>
+    <!-- justify-content: space-around — equal space around each item -->
+    <div class="flex-container jc-space-around">
+      <div class="box-1">1</div>
+      <div class="box-2">2</div>
+      <div class="box-3">3</div>
+    </div>
+    <!-- align-items: center + space-around — centered vertically and spaced horizontally -->
+    <div class="flex-container ai-center jc-space-around">
+      <div class="box-1">1</div>
+      <div class="box-2">2</div>
+      <div class="box-3">3</div>
+    </div>
+    <!-- align-items: stretch — items expand to fill the full container height -->
+    <div class="flex-container ai-stretch">
+      <div class="box-1 no-height">1</div>
+      <div class="box-2 no-height">2</div>
+      <div class="box-3 no-height">3</div>
+    </div>
+    <!-- flex-direction: row-reverse — items displayed in reverse order -->
     <div class="flex-container reverse">
       <div class="box-1">1</div>
       <div class="box-2">2</div>
       <div class="box-3">3</div>
     </div>
+    <!-- flex-direction: column — items stacked vertically -->
     <div class="flex-container column">
       <div class="box-1">1</div>
       <div class="box-2">2</div>
       <div class="box-3">3</div>
+    </div>
+    <!-- flex-grow — boxes sized proportionally (1:5:10) to fill available space -->
+    <div class="flex-container ai-grow">
+      <div class="box-1">1</div>
+      <div class="box-2">5</div>
+      <div class="box-3">10</div>
     </div>
   </body>
 </html>
