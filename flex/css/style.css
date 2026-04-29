@@ -1,0 +1,104 @@
+* {
+  /* Include the border when measuring widths, content-box is the default */
+  box-sizing: border-box;
+}
+
+h1.main-title {
+  color: crimson;
+  font-family: "Helvetica Neue", "Arial", "sans-serif";
+  font-size: 3em;
+}
+
+.flex-container {
+  display: flex; /* Must be declared in parent for flex to work */
+  width: 100%;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  height: 400px;
+  border: 1px dotted grey;
+}
+
+.box-1 {
+  background-color: crimson;
+  color: white;
+  padding: 5px;
+  width: 300px;
+  height: 200px;
+  border: 1px solid black;
+}
+
+.box-2 {
+  background-color: darkolivegreen;
+  color: white;
+  padding: 5px;
+  width: 400px;
+  height: 100px;
+  border: 1px solid black;
+}
+
+.box-3 {
+  background-color: darkslateblue;
+  color: white;
+  padding: 5px;
+  width: 200px;
+  height: 300px;
+  border: 1px solid black;
+}
+
+/* Flex direction */
+/* Reverses the order of items along the main axis */
+.reverse {
+  flex-direction: row-reverse;
+}
+/* Stacks items vertically instead of horizontally */
+.column {
+  flex-direction: column;
+}
+
+/* Justify Content - controls horizontal alignment of items */
+/* Aligns items to the end (right) of the container */
+.jc-right {
+  justify-content: flex-end;
+}
+/* Centers items along the main axis */
+.jc-center {
+  justify-content: center;
+}
+/* Equal space between items, none on the edges */
+.jc-space-between {
+  justify-content: space-between;
+}
+/* Equal space around each item, including the edges */
+.jc-space-around {
+  justify-content: space-around;
+}
+
+/* Align Items - controls vertical alignment of items */
+/* Centers items along the cross axis */
+.ai-center {
+  align-items: center;
+}
+/* Stretches items to fill the container height (requires no explicit height on items) */
+.ai-stretch {
+  align-items: stretch;
+}
+/* Removes explicit height so ai-stretch can take effect */
+.no-height {
+  height: unset;
+}
+/* Flex grow - items expand to fill remaining space proportionally */
+.ai-grow {
+  /* nothing necessary here */
+}
+.ai-grow .box-1 {
+  flex-grow: 1;
+  width: 0;
+}
+.ai-grow .box-2 {
+  flex-grow: 5;
+  width: 0;
+}
+.ai-grow .box-3 {
+  flex-grow: 10;
+  width: 0;
+}

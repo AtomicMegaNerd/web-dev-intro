@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS is fun</title>
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <h1 class="main-title">Fun with CSS</h1>
+    <!-- Default: items align to the top-left (flex-start) -->
+    <div class="flex-container">
+      <div class="box-1">1</div>
+      <div class="box-2">2</div>
+      <div class="box-3">3</div>
+    </div>
+    <!-- justify-content: flex-end — items pushed to the right -->
+    <div class="flex-container jc-right">
+      <div class="box-1">1</div>
+      <div class="box-2">2</div>
+      <div class="box-3">3</div>
+    </div>
+    <!-- justify-content: center — items centered horizontally -->
+    <div class="flex-container jc-center">
+      <div class="box-1">1</div>
+      <div class="box-2">2</div>
+      <div class="box-3">3</div>
+    </div>
+    <!-- justify-content: space-between — equal gaps between items, flush to edges -->
+    <div class="flex-container jc-space-between">
+      <div class="box-1">1</div>
+      <div class="box-2">2</div>
+      <div class="box-3">3</div>
+    </div>
+    <!-- justify-content: space-around — equal space around each item -->
+    <div class="flex-container jc-space-around">
+      <div class="box-1">1</div>
+      <div class="box-2">2</div>
+      <div class="box-3">3</div>
+    </div>
+    <!-- align-items: center + space-around — centered vertically and spaced horizontally -->
+    <div class="flex-container ai-center jc-space-around">
+      <div class="box-1">1</div>
+      <div class="box-2">2</div>
+      <div class="box-3">3</div>
+    </div>
+    <!-- align-items: stretch — items expand to fill the full container height -->
+    <div class="flex-container ai-stretch">
+      <div class="box-1 no-height">1</div>
+      <div class="box-2 no-height">2</div>
+      <div class="box-3 no-height">3</div>
+    </div>
+    <!-- flex-direction: row-reverse — items displayed in reverse order -->
+    <div class="flex-container reverse">
+      <div class="box-1">1</div>
+      <div class="box-2">2</div>
+      <div class="box-3">3</div>
+    </div>
+    <!-- flex-direction: column — items stacked vertically -->
+    <div class="flex-container column">
+      <div class="box-1">1</div>
+      <div class="box-2">2</div>
+      <div class="box-3">3</div>
+    </div>
+    <!-- flex-grow — boxes sized proportionally (1:5:10) to fill available space -->
+    <div class="flex-container ai-grow">
+      <div class="box-1">1</div>
+      <div class="box-2">5</div>
+      <div class="box-3">10</div>
+    </div>
+  </body>
+</html>
