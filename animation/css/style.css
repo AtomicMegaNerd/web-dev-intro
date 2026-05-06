@@ -1,0 +1,131 @@
+* {
+  /* Include the border when measuring widths, content-box is the default */
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes hold-my-beer {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(270deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.spin-emoji {
+  animation: spin 0.5s infinite linear;
+  display: inline-block;
+  font-size: 64pt;
+}
+
+.drunk-emoji {
+  animation: hold-my-beer 1s infinite linear;
+  display: inline-block;
+  font-size: 64pt;
+}
+
+@keyframes move {
+  to {
+    translate: 100px;
+  }
+}
+
+.dancer {
+  display: inline-block;
+  font-size: 20pt;
+  position: absolute;
+  right: 0;
+
+  /*
+    this is the long way of doing:
+    animation: move 1s infinite alternate;
+    */
+  animation-name: move;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+.dancers-list {
+  font-size: 20pt;
+  width: 100%;
+  max-width: 400px;
+  position: relative;
+}
+
+.linear {
+  animation-timing-function: linear;
+}
+.ease {
+  animation-timing-function: ease;
+}
+.ease-in-out {
+  animation-timing-function: ease-in-out;
+}
+.ease-in {
+  animation-timing-function: ease-in;
+}
+.ease-out {
+  animation-timing-function: ease-out;
+}
+.cubic-bezier {
+  animation-timing-function: cubic-bezier(0, 1, 0.5, 1);
+}
+
+@keyframes rainbow {
+  100%,
+  0% {
+    color: rgb(255, 0, 0);
+  }
+  8% {
+    color: rgb(255, 127, 0);
+  }
+  16% {
+    color: rgb(255, 255, 0);
+  }
+  25% {
+    color: rgb(127, 255, 0);
+  }
+  33% {
+    color: rgb(0, 255, 0);
+  }
+  41% {
+    color: rgb(0, 255, 127);
+  }
+  50% {
+    color: rgb(0, 255, 255);
+  }
+  58% {
+    color: rgb(0, 127, 255);
+  }
+  66% {
+    color: rgb(0, 0, 255);
+  }
+  75% {
+    color: rgb(127, 0, 255);
+  }
+  83% {
+    color: rgb(255, 0, 255);
+  }
+  91% {
+    color: rgb(255, 0, 127);
+  }
+}
+
+.rainbow-animate {
+  animation: rainbow 4s infinite linear;
+  font-size: 64pt;
+}

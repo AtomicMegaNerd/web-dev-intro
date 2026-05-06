@@ -8,10 +8,10 @@ layout {
     tab name="vim" split_direction="vertical" {
         pane command="nvim"
     }
-    tab name="llm" split_direction="vertical" {
+    tab name="shell" split_direction="vertical" {
         pane command="fish"
     }
-    tab name="shell" split_direction="vertical" {
+    tab name="llm" split_direction="vertical" {
         pane command="fish"
     }
     tab name="live-server" split_direction="vertical" {
