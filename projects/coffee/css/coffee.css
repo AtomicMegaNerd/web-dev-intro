@@ -40,6 +40,7 @@ body {
   background-color: #ebe0d4;
   border-radius: 5px;
   padding: 1em;
+  margin: 1em;
   box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
 }
 
@@ -47,29 +48,43 @@ body {
   text-transform: uppercase;
   color: #825c30;
   font-size: 1em;
+  margin-bottom: 1em;
+}
+
+/* ITEMS */
+
+.items-pane {
+  grid-area: items;
 }
 
 .menu-item {
-  border-bottom: 2px solid #825c30;
-  padding: 5px;
+  border-bottom: 1px solid #825c30;
+  padding: 1em;
   display: grid;
-  width: 100%;
-  height: 6em;
+  grid-template-columns: 1fr 10fr 1fr;
   grid-template-areas:
     "amount   sku           price"
     ".        ingredients   .";
 }
 
+/* Pseudo-element to override the last child */
+.menu-item:last-child {
+  border-bottom: 0;
+}
+
 .menu-item-amount {
   grid-area: amount;
+  font-weight: bold;
 }
 
 .menu-item-sku {
   grid-area: sku;
+  font-weight: bold;
 }
 
 .menu-item-price {
   grid-area: price;
+  font-weight: bold;
 }
 
 .ingredients {
@@ -82,31 +97,62 @@ body {
   list-style: none;
 }
 
-.items-pane {
-  grid-area: items;
-  height: 32em;
-}
+/* NAME */
 
 .name-pane {
   grid-area: name;
-  height: 12em;
 }
 
 .payment-pane {
   grid-area: payment;
-  height: 20em;
+}
+
+/* Input fields */
+
+.input-group {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  margin-bottom: 0.75em;
+}
+
+.text-input {
+  background-color: #ebe0d4;
+  border-color: #825c30;
+  padding: 8px;
+  border-radius: 20px;
+}
+
+.text-input-wide {
+  background-color: #ebe0d4;
+  border-color: #825c30;
+  padding: 8px;
+  border-radius: 20px;
+  width: 100%;
+}
+
+.text-input-label {
+  background-color: #ebe0d4;
+  color: #825c30;
+  font-size: 11px;
+  position: absolute;
+  left: 25px;
+  top: -7px;
+  padding: 0 2px;
 }
 
 .totals-pane {
-  margin-top: 4em;
   grid-area: totals;
-  height: 6em;
   text-align: center;
+}
+
+.totals-line {
+  display: flex;
+  justify-content: space-between;
 }
 
 .place-order-pane {
   grid-area: order;
-  height: 3em;
   text-align: center;
 }
 
@@ -117,18 +163,14 @@ body {
   height: 100%;
   border-radius: 5px;
   background-color: #e0e0e0;
-  grid-template-columns: 10fr 10fr 1fr 8fr 8fr;
+  grid-template-columns: 6fr 6fr 1fr 6fr 6fr;
+  grid-template-rows: 5fr 1fr 5fr 5fr 5fr 3fr 3fr;
   grid-template-areas:
-    "items      items       .         name        name"
-    "items      items       .         name        name"
     "items      items       .         name        name"
     "items      items       .         .           ."
     "items      items       .         payment     payment"
-    "items      items       .         payment     payment"
-    "items      items       .         payment     payment"
-    "items      items       .         payment     payment"
     ".          .           .         payment     payment"
     ".          .           .         .           ."
-    "totals     totals      totals    totals      totals"
+    ".          totals      totals    totals      ."
     "order      order       order     order       order";
 }
