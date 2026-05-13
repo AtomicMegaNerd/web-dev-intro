@@ -191,7 +191,6 @@ body {
   column-gap: 2em;
   background-color: #efefef;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-template-rows: 0.5fr 1fr 0.75fr 0.5fr;
   grid-template-areas:
     "items      items       name        name"
     "items      items       payment     payment"
