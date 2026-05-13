@@ -15,10 +15,8 @@ body {
   width: 100%;
   color: #f9f2c1;
   grid-area: header;
-  text-align: center;
   display: flex;
   height: 6em;
-  align-items: center;
   justify-content: space-around;
 }
 
