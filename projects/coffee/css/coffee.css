@@ -151,6 +151,7 @@ body {
 .totals-pane {
   grid-area: totals;
   text-align: center;
+  margin-top: 3em;
 }
 
 .totals-line {
@@ -163,7 +164,6 @@ body {
 .place-order-pane {
   grid-area: order;
   text-align: center;
-  width: 100%;
 }
 
 .place-order-button {
@@ -184,15 +184,14 @@ body {
 .my-page {
   display: grid;
   padding: 3em;
-  width: 100%;
+  row-gap: 2em;
+  column-gap: 2em;
   background-color: #efefef;
-  grid-template-columns: 4fr 4fr 0.5fr 4fr 4fr;
-  grid-template-rows: 1.5fr 0.25fr 2fr 1fr 1.5fr 0.5fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 0.5fr 1fr 0.75fr 0.5fr;
   grid-template-areas:
-    "items      items       .         name        name"
-    "items      items       .         .           ."
-    "items      items       .         payment     payment"
-    ".          .           .         .           ."
-    ".          totals      totals    totals      ."
-    "order      order       order     order       order";
+    "items      items       name        name"
+    "items      items       payment     payment"
+    ".          totals      totals      ."
+    "order      order       order       order";
 }
