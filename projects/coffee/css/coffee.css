@@ -37,7 +37,7 @@ body {
   margin-left: 0.25em;
 }
 
-.pane {
+.box {
   background-color: #ece1d5;
   border-radius: 10px;
   padding: 1em;
@@ -181,7 +181,7 @@ body {
   font-weight: bold;
 }
 
-.my-page {
+.main-page {
   display: grid;
   padding: 3em;
   row-gap: 2em;
