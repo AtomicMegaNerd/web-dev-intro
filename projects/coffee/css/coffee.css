@@ -16,7 +16,7 @@ body {
   grid-area: header;
   text-align: center;
   display: flex;
-  height: 3.5em;
+  height: 6em;
   align-items: center;
   justify-content: space-around;
 }
@@ -31,23 +31,22 @@ body {
 }
 
 .main-logo-text {
-  font-size: 0.75em;
+  font-size: 2.25em;
   font-weight: 600;
   margin-left: 0.25em;
 }
 
 .pane {
-  background-color: #ebe0d4;
-  border-radius: 5px;
+  background-color: #ece1d5;
+  border-radius: 10px;
   padding: 1em;
-  margin: 1em;
   box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
 }
 
 .pane-title {
   text-transform: uppercase;
   color: #825c30;
-  font-size: 1em;
+  font-size: 1.25em;
   margin-bottom: 1em;
 }
 
@@ -58,8 +57,9 @@ body {
 }
 
 .menu-item {
-  border-bottom: 1px solid #825c30;
-  padding: 1em;
+  border-bottom: 2px solid #d9ba94;
+  margin-bottom: 1em;
+  padding-bottom: 1.5em;
   display: grid;
   grid-template-columns: 1fr 10fr 1fr;
   grid-template-areas:
@@ -70,30 +70,36 @@ body {
 /* Pseudo-element to override the last child */
 .menu-item:last-child {
   border-bottom: 0;
+  margin-bottom: 0;
 }
 
 .menu-item-amount {
   grid-area: amount;
   font-weight: bold;
+  font-size: 1.25em;
 }
 
 .menu-item-sku {
   grid-area: sku;
   font-weight: bold;
+  font-size: 1.25em;
 }
 
 .menu-item-price {
   grid-area: price;
   font-weight: bold;
+  font-size: 1.25em;
 }
 
 .ingredients {
   grid-area: ingredients;
+  margin-top: 1em;
 }
 
 .ingredient {
-  color: #825c30;
-  font-size: 0.75em;
+  color: #ab8a69;
+  margin-top: 0.25em;
+  font-size: 1em;
   list-style: none;
 }
 
@@ -117,27 +123,27 @@ body {
 }
 
 .text-input {
-  background-color: #ebe0d4;
-  border-color: #825c30;
-  padding: 8px;
-  border-radius: 20px;
+  background-color: #ece1d5;
+  border: 2px solid #825c30;
+  /* top right bottom left */
+  padding: 0em 1em 0em 1em;
+  height: 3em;
+  font-size: 1em;
+  border-radius: 40px;
+  margin-bottom: 0.5em;
 }
 
-.text-input-wide {
-  background-color: #ebe0d4;
-  border-color: #825c30;
-  padding: 8px;
-  border-radius: 20px;
+.wide {
   width: 100%;
 }
 
 .text-input-label {
-  background-color: #ebe0d4;
+  background-color: #ece1d5;
   color: #825c30;
-  font-size: 11px;
+  font-size: 1em;
   position: absolute;
   left: 25px;
-  top: -7px;
+  top: -10px;
   padding: 0 2px;
 }
 
@@ -149,27 +155,44 @@ body {
 .totals-line {
   display: flex;
   justify-content: space-between;
+  font-size: 1.25em;
+  margin-bottom: 1.25em;
 }
 
 .place-order-pane {
   grid-area: order;
   text-align: center;
+  width: 100%;
+}
+
+.place-order-button {
+  border: 0;
+  font-size: 1.25em;
+  width: 100%;
+  height: 2.5em;
+  background-color: #d9ba94;
+  color: black;
+  border-radius: 25px;
+}
+
+.total-label,
+.total {
+  font-weight: bold;
 }
 
 .my-page {
   display: grid;
-  padding: 1em;
+  padding: 3em;
   width: 100%;
   height: 100%;
   border-radius: 5px;
-  background-color: #e0e0e0;
-  grid-template-columns: 6fr 6fr 1fr 6fr 6fr;
-  grid-template-rows: 5fr 1fr 5fr 5fr 5fr 3fr 3fr;
+  background-color: #efefef;
+  grid-template-columns: 4fr 4fr 0.5fr 4fr 4fr;
+  grid-template-rows: 1.5fr 0.25fr 2fr 1fr 1.5fr 0.5fr;
   grid-template-areas:
     "items      items       .         name        name"
     "items      items       .         .           ."
     "items      items       .         payment     payment"
-    ".          .           .         payment     payment"
     ".          .           .         .           ."
     ".          totals      totals    totals      ."
     "order      order       order     order       order";

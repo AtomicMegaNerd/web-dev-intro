@@ -58,7 +58,7 @@
         <div class="pane-title">NAME</div>
         <div class="input-group">
           <label for="name" class="text-input-label">Name for order</label>
-          <input id="name" class="text-input-wide" placeholder="Ford Prefect" />
+          <input id="name" class="text-input wide" />
         </div>
       </div>
       <div class="payment-pane pane">
@@ -66,15 +66,11 @@
 
         <div class="input-group">
           <label for="cardnum" class="text-input-label">Card Number</label>
-          <input
-            id="cardnum"
-            class="text-input-wide"
-            placeholder="1234 5678 9012 3456"
-          />
+          <input id="cardnum" class="text-input wide" />
         </div>
         <div class="input-group">
           <label for="ccv" class="text-input-label">CCV Number</label>
-          <input id="ccv" class="text-input" placeholder="001" />
+          <input id="ccv" class="text-input" />
         </div>
       </div>
       <div class="totals-pane">
@@ -91,7 +87,9 @@
           <div class="total">$10.47</div>
         </div>
       </div>
-      <div class="place-order-pane">Lorem, ipsum dolor.</div>
+      <div class="place-order-pane">
+        <input class="place-order-button" type="button" value="Place Order" />
+      </div>
     </div>
   </body>
 </html>

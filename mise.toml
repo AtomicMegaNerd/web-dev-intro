@@ -2,3 +2,4 @@
 "npm:@olrtg/emmet-language-server" = "2.8.0"
 "npm:htmlhint" = "1.9.2"
 "npm:vscode-langservers-extracted" = "4.10.0"
+"npm:live-server" = "1.2.2"
