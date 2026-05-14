@@ -80,7 +80,3 @@ mise install
 
 - [JS Reference](./lessons/js/README.md)
 - [JS Basics](./lessons/js/basics/README.md)
-
-## Todo
-
-- [ ] Setup nix flake on my personal MBA.
