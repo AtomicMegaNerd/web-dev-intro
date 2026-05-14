@@ -116,6 +116,7 @@
               pkgs.oxlint
               pkgs.typescript-go
               pkgs.vscode-langservers-extracted
+              pkgs.bash-language-server
             ];
           };
       });
