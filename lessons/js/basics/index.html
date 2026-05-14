@@ -3,13 +3,24 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- load CSS first to avoid FOUC - flash of unstyled content -->
+    <link rel="stylesheet" href="./css/style.css" />
     <title>Fun with Javascript</title>
   </head>
   <body>
+    <!-- Load HTML content next -->
     <h1>Javascript Experiments</h1>
-    <!-- Our JS output will show up in the browser web-tools console, the browser will stop
-         loading the page, run the script line-by-line, then keep loading. Pages load faster
-         if we put script tags in the body -->
+    <p>
+      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odio debitis
+      nisi molestias quo quibusdam ex asperiores voluptatem sint, maxime
+      consectetur labore corporis iusto est libero.
+    </p>
+
+    <!--
+      Load JS last so we don't slow down the page load. When it sees a script tag the browser
+      will stop loading the page, run the script line-by-line, then keep loading. See README.md
+      in this folder for more details.
+    -->
     <script src="./hello.js"></script>
   </body>
 </html>

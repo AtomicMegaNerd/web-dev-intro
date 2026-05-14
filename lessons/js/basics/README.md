@@ -93,10 +93,16 @@ Quoting the article:
 
 ## Loading
 
-The instructor recommends loading JS in the body as it makes web pages load faster.
+The best order to load web pages is:
 
-Modern alternative — defer and async attributes: Today you'd typically keep scripts in `<head>` but
-use these attributes instead:
+1. CSS
+2. HTML
+3. Javascript
+
+The instructor recommends loading JS at the end of the body as it makes web pages load faster.
+
+**NOTE: Modern alternative**  — `defer` and `async` attributes: Today you'd typically keep scripts
+in `<head>` but use these attributes instead:
 
 ```html
 <!-- Downloads in parallel, executes after HTML is parsed -->
