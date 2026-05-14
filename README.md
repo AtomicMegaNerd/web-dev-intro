@@ -65,7 +65,10 @@ install all of the tooling by:
 ```bash
 mise trust .
 mise install
+mise setup
 ```
+
+The last command setup will setup pre-commit
 
 ## Reference Links
 

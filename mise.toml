@@ -7,12 +7,40 @@
 oxfmt = "latest"
 oxlint = "latest"
 markdownlint-cli2 = "latest"
+pre-commit = "latest"
 
-[tasks.lint]
-run = "oxlint ."
+[tasks.setup]
+description = "Generate .pre-commit-config.yaml and install git hooks"
+run = """
+cat > .pre-commit-config.yaml << 'EOF'
+repos:
+  - repo: local
+    hooks:
+      - id: oxlint
+        name: oxlint
+        language: system
+        entry: oxlint
+        args: ["."]
+        pass_filenames: false
 
-[tasks.format]
-run = "oxfmt ."
+      - id: oxfmt
+        name: oxfmt
+        language: system
+        entry: oxfmt
+        args: ["--check", "."]
+        pass_filenames: false
 
-[tasks.check]
-run = "oxlint . && oxfmt --check ."
+      - id: markdownlint-cli2
+        name: markdownlint-cli2
+        language: system
+        entry: markdownlint-cli2
+        types: [markdown]
+
+      - id: htmlhint
+        name: htmlhint
+        language: system
+        entry: htmlhint
+        types: [html]
+EOF
+pre-commit install
+"""
