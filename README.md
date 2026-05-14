@@ -40,6 +40,12 @@ In preview at the time I started this project. This has built-in LSP which is aw
 
 [https://github.com/microsoft/typescript-go](https://github.com/microsoft/typescript-go)
 
+### Prettier
+
+Formatter for web development.
+
+[https://prettier.io](https://prettier.io)
+
 ## Setup
 
 ### Nix
