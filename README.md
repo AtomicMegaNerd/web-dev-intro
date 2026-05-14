@@ -58,3 +58,7 @@ All of the references are in the course website linked above as well.
 ##### Grid
 
 [https://css-tricks.com/complete-guide-css-grid-layout/](https://css-tricks.com/complete-guide-css-grid-layout/)
+
+## Todo
+
+- [ ] Setup nix flake on my personal MBA.
