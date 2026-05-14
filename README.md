@@ -35,17 +35,29 @@ Run a small web-server from the command line.
 
 [https://github.com/tapio/live-server](https://github.com/tapio/live-server)
 
-### Typescript Go (Typscript 7)
+### Typescript Go (TypeScript 7)
 
 In preview at the time I started this project. This has built-in LSP which is awesome!
 
 [https://github.com/microsoft/typescript-go](https://github.com/microsoft/typescript-go)
 
-### Prettier
+### oxfmt
 
 Formatter for web development.
 
-[https://prettier.io](https://prettier.io)
+[https://github.com/oxc-project/oxc](https://github.com/oxc-project/oxc)
+
+### oxlint
+
+Fast linter for JavaScript and TypeScript.
+
+[https://oxc.rs/docs/guide/usage/linter](https://oxc.rs/docs/guide/usage/linter)
+
+### markdownlint-cli2
+
+Linter for Markdown files.
+
+[https://github.com/DavidAnson/markdownlint-cli2](https://github.com/DavidAnson/markdownlint-cli2)
 
 ## Setup
 
