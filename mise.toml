@@ -6,3 +6,13 @@
 "npm:@typescript/native-preview" = "latest"
 oxfmt = "latest"
 oxlint = "latest"
+markdownlint-cli2 = "latest"
+
+[tasks.lint]
+run = "oxlint ."
+
+[tasks.format]
+run = "oxfmt ."
+
+[tasks.check]
+run = "oxlint . && oxfmt --check ."
