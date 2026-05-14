@@ -19,3 +19,17 @@ if (x !== y) {
 } else {
   console.log(`${x} is equal to ${y}.`)
 }
+
+
+// Back-ticks can be multi-line
+const longStr = `
+package main
+
+import "fmt"
+
+func main() {
+  fmt.Println("Hello, world")
+}
+`
+
+console.log(longStr)

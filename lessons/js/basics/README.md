@@ -1,11 +1,29 @@
 # Javascript Basics
 
+Notes on some of the lessons I learned from the lessons.
+
 ## String Interpolation
 
-Use backticks for string interpolation. Don't do string concat (even though you can).
+Use backticks for string interpolation. Don't do string concat (even though you can). They call
+these template-strings. Came with ES6.
 
 ```js
 const `Hello ${firstName}!`;
+```
+
+Back-ticks are also multi-line:
+
+```js
+// Back-ticks can be multi-line
+const longStr = `
+package main
+
+import "fmt"
+
+func main() {
+  fmt.Println("Hello, world")
+}
+`
 ```
 
 ## The Number Type
