@@ -5,6 +5,41 @@
 See [course site](https://btholt.github.io/complete-intro-to-web-dev-v3/). This is the repo that
 I created to save all of the work that I am doing for this course.
 
+## Tooling
+
+The following tooling is installed with this repo and is used for this project. I use [Neovim](https://neovim.io)
+so we need to install the various LSP's and linters for this project to work.
+
+### emmet-language-server
+
+This LSP allows our editor to use [Emmet](https://docs.emmet.io/)
+
+[https://github.com/olrtg/emmet-language-server](https://github.com/olrtg/emmet-language-server)
+
+### htmlhint
+
+This is the linter we use for the project.
+
+[https://github.com/htmlhint/HTMLHint](https://github.com/htmlhint/HTMLHint)
+
+### vscode-langservers-extracted
+
+This let's use use various LSP's for web development from Microsoft outside of VSCode:
+
+[https://github.com/hrsh7th/vscode-langservers-extracted](https://github.com/hrsh7th/vscode-langservers-extracted)
+
+### live-server
+
+Run a small web-server from the command line.
+
+[https://github.com/tapio/live-server](https://github.com/tapio/live-server)
+
+### Typescript Go (Typscript 7)
+
+In preview at the time I started this project. This has built-in LSP which is awesome!
+
+[https://github.com/microsoft/typescript-go](https://github.com/microsoft/typescript-go)
+
 ## Setup
 
 ### Nix
@@ -25,39 +60,19 @@ mise trust .
 mise install
 ```
 
-## Running the Examples
-
-To load any sites in this repo live:
-
-```bash
-live-server --no-browser /folder/with/html
-```
-
-To run any javascript file from cli:
-
-```bash
-node /path/to/file.js
-```
-
-## References
-
-All of the references are in the course website linked above as well.
+## Reference Links
 
 ### HTML and CSS
 
-#### Can I Use?
+- [HTML and CSS Reference](./lessons/html/README.md)
+- [CSS Flex](./lessons/html/flex/README.md)
+- [CSS Grid](./lessons/html/grid/README.md)
+- [CSS Animation](./lessons/html/animation/README.md)
 
-[https://caniuse.com/](https://caniuse.com/)
+### Javascript
 
-#### CSS Tricks
-
-##### Flex Box
-
-[https://css-tricks.com/snippets/css/a-guide-to-flexbox/](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
-
-##### Grid
-
-[https://css-tricks.com/complete-guide-css-grid-layout/](https://css-tricks.com/complete-guide-css-grid-layout/)
+- [JS Reference](./lessons/js/README.md)
+- [JS Basics](./lessons/js/basics/README.md)
 
 ## Todo
 
