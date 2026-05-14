@@ -83,10 +83,31 @@ Quoting the article:
 
 > Which operation you choose depends on what sort of comparison you are looking to perform. Briefly:
 >
-> * Double equals (==) will perform a type conversion when comparing two things, and will handle
+> - Double equals (==) will perform a type conversion when comparing two things, and will handle
     NaN, -0, and +0 specially to conform to IEEE 754 (so NaN != NaN, and -0 == +0);
-> * Triple equals (===) will do the same comparison as double equals (including the special
+> - Triple equals (===) will do the same comparison as double equals (including the special
     handling for NaN, -0, and +0) but without type conversion; if the types differ, false is
     returned.
-> * Object.is() does no type conversion and no special handling for NaN, -0, and +0 (giving it the
+> - Object.is() does no type conversion and no special handling for NaN, -0, and +0 (giving it the
     same behavior as === except on those special numeric values).
+
+## Loading
+
+The instructor recommends loading JS in the body as it makes web pages load faster.
+
+Modern alternative — defer and async attributes: Today you'd typically keep scripts in `<head>` but
+use these attributes instead:
+
+```html
+<!-- Downloads in parallel, executes after HTML is parsed -->
+<script src="app.js" defer></script>
+
+<!-- Downloads in parallel, executes immediately when ready (order not guaranteed) -->
+<script src="analytics.js" async></script>
+```
+
+- `defer` is usually the best choice — same effect as bottom-of-body but cleaner
+- `async` is good for independent scripts like analytics that don't depend on the DOM
+
+The "put scripts at the bottom of body" advice predates defer/async but is still valid and commonly
+taught as the foundational concept.
