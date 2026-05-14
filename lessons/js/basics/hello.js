@@ -32,3 +32,32 @@ func main() {
 `;
 
 console.log(longStr);
+
+// Exercise - super basic
+const character = "f";
+const timesToRepeat = 5;
+let message = "";
+
+for (let i = 0; i < timesToRepeat; i++) {
+  message += character;
+}
+console.log(message);
+
+// Functions are what we expect
+function add(x, y) {
+  return x + y;
+}
+
+// Another syntax
+const mul = function(x, y) {
+  return x * y;
+};
+
+// Yet another syntax
+const div = (x, y) => {
+  return x / y;
+};
+
+console.log(add(3, 4));
+console.log(mul(3, 4));
+console.log(div(6, 2));
