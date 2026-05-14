@@ -1,7 +1,7 @@
 {
- "line-length": false,
+  "line-length": false,
   "no-duplicate-heading": {
     "siblings_only": true
   },
-	"fenced-code-language": false
+  "fenced-code-language": false
 }

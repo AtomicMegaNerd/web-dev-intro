@@ -2,13 +2,14 @@
 
 ## Introduction
 
-See [course site](https://btholt.github.io/complete-intro-to-web-dev-v3/). This is the repo that
-I created to save all of the work that I am doing for this course.
+See [course site](https://btholt.github.io/complete-intro-to-web-dev-v3/). This is the repo that I
+created to save all of the work that I am doing for this course.
 
 ## Tooling
 
-The following tooling is installed with this repo and is used for this project. I use [Neovim](https://neovim.io)
-so we need to install the various LSP's and linters for this project to work.
+The following tooling is installed with this repo and is used for this project. I use
+[Neovim](https://neovim.io) so we need to install the various LSP's and linters for this project to
+work.
 
 ### emmet-language-server
 
@@ -58,8 +59,8 @@ direnv allow .
 
 ### Non-Nix
 
-On non-nix systems please use [mise-en-place](https://mise.jdx.dev/). After installing mise
-you can install all of the tooling by:
+On non-nix systems please use [mise-en-place](https://mise.jdx.dev/). After installing mise you can
+install all of the tooling by:
 
 ```bash
 mise trust .

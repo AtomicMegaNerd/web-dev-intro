@@ -49,7 +49,7 @@ function add(x, y) {
 }
 
 // Another syntax
-const mul = function(x, y) {
+const mul = function (x, y) {
   return x * y;
 };
 

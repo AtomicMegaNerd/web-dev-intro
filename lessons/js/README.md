@@ -21,8 +21,8 @@ node
 
 The following special commands are supported by all REPL instances:
 
-- `.break`: When in the process of inputting a multi-line expression, enter the .break command
-  (or press Ctrl+C) to abort further input or processing of that expression.
+- `.break`: When in the process of inputting a multi-line expression, enter the .break command (or
+  press Ctrl+C) to abort further input or processing of that expression.
 - `.clear`: Resets the REPL context to an empty object and clears any multi-line expression being
   input.
 - `.exit`: Close the I/O stream, causing the REPL to exit.
