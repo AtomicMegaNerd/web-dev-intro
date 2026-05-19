@@ -104,17 +104,11 @@ Quoting the article:
 > Which operation you choose depends on what sort of comparison you are looking to perform. Briefly:
 >
 > - Double equals (==) will perform a type conversion when comparing two things, and will handle
-
-    NaN, -0, and +0 specially to conform to IEEE 754 (so NaN != NaN, and -0 == +0);
-
-> - Triple equals (===) will do the same comparison as double equals (including the special
-
-    handling for NaN, -0, and +0) but without type conversion; if the types differ, false is
-    returned.
-
+>   NaN, -0, and +0 specially to conform to IEEE 754 (so NaN != NaN, and -0 == +0);
+> - Triple equals (===) will do the same comparison as double equals (including the special handling
+>   for NaN, -0, and +0) but without type conversion; if the types differ, false is returned.
 > - Object.is() does no type conversion and no special handling for NaN, -0, and +0 (giving it the
-
-    same behavior as === except on those special numeric values).
+>   same behavior as === except on those special numeric values).
 
 ## Loading
 
@@ -145,7 +139,7 @@ taught as the foundational concept.
 
 ## Functions
 
-## 1. Function Declaration
+### Function Declaration
 
 ```js
 function add(x, y) {
@@ -157,7 +151,7 @@ function add(x, y) {
 - Has its own `this` binding
 - Has `arguments` object
 
-## 2. Function Expression
+### Function Expression
 
 ```js
 const mul = function (x, y) {
@@ -170,7 +164,7 @@ const mul = function (x, y) {
 - Has `arguments` object
 - Can be **named** (`const mul = function multiply(...)`) which helps with stack traces
 
-## 3. Arrow Function
+### Arrow Function
 
 ```js
 const div = (x, y) => {
@@ -184,14 +178,17 @@ const div = (x, y) => {
 - Cannot be used as a constructor (`new` throws)
 - Concise form available: `const div = (x, y) => x / y;`
 
-## Key Rule of Thumb
+#### Arrow Functions Support Currying
 
-| Need                           | Use                                       |
-| ------------------------------ | ----------------------------------------- |
-| Top-level / utility functions  | Declaration or expression                 |
-| Callbacks / short lambdas      | Arrow function                            |
-| Object methods that use `this` | Declaration or expression (**not** arrow) |
-| Class methods                  | Declaration syntax inside class           |
+It is really cool that Javascript supports currying :-)
 
-The `this` behavior is the most common gotcha — arrow functions are popular in React/callbacks
-precisely _because_ they don't rebind `this`.
+```js
+// Hey currying works!
+const add2 = (x) => (y) => {
+  return x + y;
+};
+
+const addTo5 = add2(5);
+
+console.log(addTo5(4));
+```

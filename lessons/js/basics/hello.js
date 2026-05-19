@@ -61,3 +61,12 @@ const div = (x, y) => {
 console.log(add(3, 4));
 console.log(mul(3, 4));
 console.log(div(6, 2));
+
+// Hey currying works!
+const add2 = (x) => (y) => {
+  return x + y;
+};
+
+const addTo5 = add2(5);
+
+console.log(addTo5(4));
