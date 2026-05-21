@@ -6,6 +6,7 @@
     "perf": "warn"
   },
   "rules": {
-    "eqeqeq": "error"
+    "eqeqeq": "error",
+    "no-magic-numbers": "off"
   }
 }

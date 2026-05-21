@@ -1,3 +1,9 @@
+// oxlint-disable capitalized-comments
+// oxlint-disable func-names
+// oxlint-disable arrow-body-style
+// oxlint-disable id-length
+// oxlint-disable func-style
+//
 const greeting = "Hello World!";
 
 const firstName = "Chris";
@@ -11,13 +17,19 @@ const sentence = `Hello ${firstName} ${lastName}! How are you!?`;
 console.log(sentence);
 
 // Define some variables
-let x = 9;
-let y = 7;
+let num1 = 9;
+const num2 = 7;
 
-if (x !== y) {
-  console.log(`${x} is not equal to ${y}.`);
+// Let is mutable
+num1 = 6;
+
+// However const is nto mutable
+// num2 = 7;
+
+if (num1 !== num2) {
+  console.log(`${num1} is not equal to ${num2}.`);
 } else {
-  console.log(`${x} is equal to ${y}.`);
+  console.log(`${num1} is equal to ${num2}.`);
 }
 
 // Back-ticks can be multi-line
