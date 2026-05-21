@@ -15,7 +15,13 @@ JSON is a **strict subset** of JS object literal syntax, designed for data inter
 are richer runtime structures. `JSON.stringify()` silently drops values that don't fit the JSON spec
 (e.g., `undefined`, functions).
 
-## Refrence Links
+## This
+
+This is complicated. In an object it can refer to the instance of the object. In a browser global
+this refers to the browser window object. In NodeJS it can be an empty object or undefined depending
+if CommonJS or ES Modules are used.
+
+## Reference Links
 
 - [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)
 - [this](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this)

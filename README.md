@@ -59,6 +59,17 @@ Linter for Markdown files.
 
 [https://github.com/DavidAnson/markdownlint-cli2](https://github.com/DavidAnson/markdownlint-cli2)
 
+## NodeJS
+
+NodeJS is the runtime we are using for this course. We turn on module support to make this use
+strict mode for safety.
+
+```json
+{
+  "type": "module"
+}
+```
+
 ## Setup
 
 ### Nix
