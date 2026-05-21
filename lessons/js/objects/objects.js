@@ -1,3 +1,12 @@
+import { styleText } from "node:util";
+
+const log = {
+  error: (msg) => console.error(styleText("red", msg)),
+  warn: (msg) => console.warn(styleText("yellow", msg)),
+  info: (msg) => console.info(styleText("cyan", msg)),
+  debug: (msg) => console.debug(styleText("gray", msg)),
+};
+
 // JSON!
 const person = {
   name: "Fred Smith",
@@ -49,3 +58,9 @@ const people = [
 for (const person of people) {
   person.speak();
 }
+
+// Hey! console has logging levels
+log.debug("deubg info");
+log.info("indo info");
+log.warn("warn info");
+log.error("error info");

@@ -27,7 +27,7 @@ repos:
         name: oxfmt
         language: system
         entry: oxfmt
-        args: ["--check", "."]
+        args: ["."]
         pass_filenames: false
 
       - id: markdownlint-cli2

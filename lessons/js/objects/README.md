@@ -17,4 +17,5 @@ are richer runtime structures. `JSON.stringify()` silently drops values that don
 
 ## Refrence Links
 
-[https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)
+- [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)
+- [this](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this)
