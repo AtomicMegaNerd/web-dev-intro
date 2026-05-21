@@ -1,0 +1,11 @@
+{
+  "categories": {
+    "correctness": "error",
+    "suspicious": "warn",
+    "style": "warn",
+    "perf": "warn"
+  },
+  "rules": {
+    "eqeqeq": "error"
+  }
+}
