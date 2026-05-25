@@ -8,6 +8,7 @@
   "rules": {
     "eqeqeq": "error",
     "capitalized-comments": "off",
+    "sort-keys": "off",
     "no-magic-numbers": "off"
   }
 }

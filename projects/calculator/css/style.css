@@ -1,0 +1,114 @@
+* {
+  /* Include the border when measuring widths, content-box is the default */
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Helvetica Neue", "Arial", "sans-serif";
+}
+
+.calc-main {
+  width: 600px;
+  background-color: black;
+}
+
+.calc-output {
+  height: 3em;
+  font-size: 2em;
+  background-color: black;
+  color: white;
+}
+
+.orange {
+  background-color: orange;
+}
+
+.calc-button {
+  border: 0;
+  font-size: 2em;
+  padding: 1em;
+}
+
+.button-clear {
+  grid-area: "btn-clr";
+}
+
+.button-back {
+  grid-area: "btn-bak";
+}
+
+.button-div {
+  grid-area: "btn-div";
+}
+
+.button-mul {
+  grid-area: "btn-mul";
+}
+
+.button-plus {
+  grid-area: "btn-pls";
+}
+
+.button-sub {
+  grid-area: "btn-sub";
+}
+
+.button-equals {
+  grid-area: "btn-equ";
+}
+
+.button-0 {
+  grid-area: "btn-000";
+}
+
+.button-1 {
+  grid-area: "btn-001";
+}
+
+.button-2 {
+  grid-area: "btn-002";
+}
+
+.button-3 {
+  grid-area: "btn-003";
+}
+
+.button-3 {
+  grid-area: "btn-003";
+}
+
+.button-4 {
+  grid-area: "btn-004";
+}
+
+.button-5 {
+  grid-area: "btn-005";
+}
+
+.button-6 {
+  grid-area: "btn-006";
+}
+
+.button-7 {
+  grid-area: "btn-007";
+}
+
+.button-8 {
+  grid-area: "btn-008";
+}
+
+.button-9 {
+  grid-area: "btn-009";
+}
+
+.calc-button-container {
+  display: grid;
+  row-gap: 2px;
+  column-gap: 2px;
+  grid-template-areas:
+    "btn-clr btn-clr btn-bak btn-div"
+    "btn-007 btn-008 btn-009 btn-mul"
+    "btn-004 btn-005 btn-006 btn-sub"
+    "btn-001 btn-002 btn-003 btn-pls"
+    "btn-000 btn-000 btn-000 btn-equ";
+}
