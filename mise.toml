@@ -1,13 +1,15 @@
 [tools]
-"npm:@olrtg/emmet-language-server" = "2.8.0"
-"npm:htmlhint" = "1.9.2"
-"npm:vscode-langservers-extracted" = "4.10.0"
-"npm:live-server" = "1.2.2"
-"npm:@typescript/native-preview" = "latest"
 oxfmt = "latest"
 oxlint = "latest"
 markdownlint-cli2 = "latest"
 pre-commit = "latest"
+
+# npm packages
+"npm:@olrtg/emmet-language-server" = "latest"
+"npm:htmlhint" = "latest"
+"npm:vscode-langservers-extracted" = "latest"
+"npm:live-server" = "latest"
+"npm:@typescript/native-preview" = "latest"
 
 [tasks.setup]
 description = "Generate .pre-commit-config.yaml and install git hooks"
