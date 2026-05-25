@@ -1,0 +1,47 @@
+* {
+  /* Include the border when measuring widths, content-box is the default */
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+  font-size: 1.2em;
+  background-color: #777777;
+  color: white;
+}
+
+.event-button {
+  width: 200px;
+  font-size: 1em;
+  padding: 0.5em;
+  background-color: cornflowerblue;
+  color: white;
+  border: 0;
+  border-radius: 100px;
+}
+
+.p-copy-src {
+  font-size: 1em;
+}
+
+.color-box {
+  width: 100px;
+  height: 100px;
+  border: 0;
+  background-color: cornflowerblue;
+  margin-bottom: 1em;
+}
+
+.color-box-color-src {
+  font-size: 1em;
+}
+
+.button-container-button {
+  background-color: cornflowerblue;
+  color: white;
+  border: 0;
+  font-size: 1em;
+  width: 50px;
+  margin-right: 10px;
+  border-radius: 30px;
+}
