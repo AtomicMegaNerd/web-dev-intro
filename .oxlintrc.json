@@ -7,6 +7,7 @@
   },
   "rules": {
     "eqeqeq": "error",
+    "capitalized-comments": "off",
     "no-magic-numbers": "off"
   }
 }

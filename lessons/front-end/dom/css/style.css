@@ -1,0 +1,37 @@
+* {
+  /* Include the border when measuring widths, content-box is the default */
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+  background-color: #cccccc;
+}
+
+.red-square {
+  background-color: crimson;
+  width: 100px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.blue-square {
+  background-color: cornflowerblue;
+  width: 100px;
+  height: 100px;
+  display: flex;
+  /* aligns horizontally */
+  justify-content: center;
+  /* aligns vertgically */
+  align-items: center;
+}
+
+.square-text {
+}
+
+.dark-mode {
+  background-color: darkblue;
+  color: white;
+}
