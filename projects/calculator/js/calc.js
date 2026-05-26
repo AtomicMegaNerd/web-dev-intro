@@ -6,10 +6,18 @@ const op_sub = "sub";
 const op_add = "add";
 
 // Calculator uses numbers internally, but it takes string arguments
-// from the page and returns string results to the page.
+// from the page and returns string results to the page. We are not implementing
+// div as it is outside the scope of this assignment. This means that te caclulator
+// only works with whole integers.
 const calc = {
+  // We have a single register in this caclulator
   register: 0,
+
+  // The current operation
   operator: op_noop,
+
+  // The keys below are equal to the value of the op_* consts above. This is a lovely
+  // little map which maps this.operator to the operation we want to perform.
   ops: {
     mul: (lhs, rhs) => lhs * rhs,
     add: (lhs, rhs) => lhs + rhs,
