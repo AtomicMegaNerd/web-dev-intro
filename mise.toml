@@ -1,4 +1,5 @@
 [tools]
+node = "latest"
 oxfmt = "latest"
 oxlint = "latest"
 markdownlint-cli2 = "latest"
