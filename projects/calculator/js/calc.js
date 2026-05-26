@@ -1,97 +1,104 @@
 console.log("initializing calc");
 
-const calc = {
-  // We operate the operands like a stack FIFO
-  operands: [],
-  operator: this.noop,
+const noop = "noop";
+const mult = "mul";
+const sub = "sub";
+const plus = "add";
 
-  noop() {
-    // Do nothing
-  },
+// Calculator uses numbers internally, but it takes string arguments
+// from the page and returns string results to the page.
+const calc = {
+  store: "0",
+  operator: noop,
 
   clr() {
-    this.operands = [];
-    this.operator = this.noop;
+    this.store = "0";
+    this.operator = noop;
+    return this.store;
   },
 
-  add() {
-    const lhs = parseInt(this.operands.pop());
-    const rhs = parseInt(this.operands.pop());
-    const res = lhs + rhs;
-    this.operands.push(`${res}`);
-    return res;
-  },
+  op(val) {
+    if (this.operator === noop) {
+      return;
+    }
 
-  mul() {
-    const lhs = parseInt(this.operands.pop());
-    const rhs = parseInt(this.operands.pop());
-    const res = lhs * rhs;
-    this.operands.push(`${res}`);
-    return res;
-  },
+    let lhs = parseInt(this.store);
+    const rhs = parseInt(val);
 
-  sub() {
-    const lhs = parseInt(this.operands.pop());
-    const rhs = parseInt(this.operands.pop());
-    const res = lhs - rhs;
-    this.operands.push(`${res}`);
-    return res;
+    switch (this.operator) {
+      case mult: {
+        lhs *= rhs;
+        break;
+      }
+      case sub: {
+        lhs -= rhs;
+        break;
+      }
+      case plus: {
+        lhs += rhs;
+        break;
+      }
+    }
+    this.store = `${lhs}`;
+    return this.store;
   },
 
   toString() {
-    return `calc: operands=${this.operands}, operator=${this.operator}`;
+    return `calc: store=[${this.store}], operator=${this.operator}`;
   },
 };
 
-// This is the output window
 const calcOutput = document.querySelector(`.calc-output`);
 
 // Resister all of the number buttons
 for (let ix = 0; ix <= 9; ix++) {
   const button = document.querySelector(`.button-${ix}`);
   button.addEventListener("click", () => {
-    calcOutput.textContent += `${ix}`;
-    console.log(`clicked ${ix}. ${calc}`);
+    // Strip out the leading zero as soon as we enter numbers
+    if (calcOutput.textContent === "0") {
+      calcOutput.textContent = `${ix}`;
+    } else {
+      calcOutput.textContent += `${ix}`;
+    }
+    console.log(`${ix}. ${calc}`);
   });
 }
 
 // Register the standard operators
-const operators = ["mul", "add", "sub"];
+const operators = [mult, plus, sub];
 for (const operator of operators) {
   const button = document.querySelector(`.button-${operator}`);
-  if (!button) {
-    console.log(`button-${operator} selector not found`);
-  }
   button.addEventListener("click", () => {
-    calc.operands.push(calcOutput.textContent);
-    // We can use [] syntax to set the operator method by string :-)
-    calc.operator = calc[operator];
-    calcOutput.textContent = "";
-    console.log(`clicked ${operator}. ${calc}`);
+    calc.store = calcOutput.textContent;
+    calc.operator = operator;
+    calcOutput.textContent = "0";
+    console.log(`${operator}. ${calc}`);
   });
 }
 
 const back = document.querySelector(`.button-back`);
 back.addEventListener("click", () => {
-  const val = calcOutput.textContent;
-  calcOutput.textContent = val.slice(0, -1);
-  console.log(`clicked back. ${calc}`);
+  calcOutput.textContent = calcOutput.textContent.slice(0, -1);
+  if (calcOutput.textContent.length === 0) {
+    calcOutput.textContent = "0";
+  }
+  console.log(`back. ${calc}`);
 });
 
 const clear = document.querySelector(`.button-clear`);
 clear.addEventListener("click", () => {
-  calc.clear();
-  calc.operator = calc.noop;
-  calcOutput.textContent = "0";
-  console.log(`clicked clear. ${calc}`);
+  calcOutput.textContent = calc.clr();
+  console.log(`clear. ${calc}`);
 });
 
 const equals = document.querySelector(`.button-equals`);
 equals.addEventListener("click", () => {
-  calcOutput.textContent = `${calc.operator()}`;
-  console.log(`clicked equals. ${calc}`);
+  // Push the second operand before calculating
+  const rhs = calcOutput.textContent;
+  calcOutput.textContent = calc.op(rhs);
+  console.log(`equals: ${rhs} ${calc}`);
 });
 
 // Initial state
-calcOutput.textContent = "0";
-console.log("calc ready");
+calcOutput.textContent = calc.store;
+console.log(`calc ready: ${calc}`);
