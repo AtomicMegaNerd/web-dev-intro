@@ -11,9 +11,9 @@ const calc = {
   register: 0,
   operator: noop,
   ops: {
-    [mult]: (lhs, rhs) => lhs * rhs,
-    [plus]: (lhs, rhs) => lhs + rhs,
-    [sub]: (lhs, rhs) => lhs - rhs,
+    mul: (lhs, rhs) => lhs * rhs,
+    add: (lhs, rhs) => lhs + rhs,
+    sub: (lhs, rhs) => lhs - rhs,
   },
 
   store(val) {
