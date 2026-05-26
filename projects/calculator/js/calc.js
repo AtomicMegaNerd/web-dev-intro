@@ -42,6 +42,7 @@ const calc = {
   },
 };
 
+// This is our calculator display
 const calcOutput = document.querySelector(`.calc-output`);
 
 // Resister all of the number buttons
