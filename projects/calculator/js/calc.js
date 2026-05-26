@@ -8,43 +8,37 @@ const plus = "add";
 // Calculator uses numbers internally, but it takes string arguments
 // from the page and returns string results to the page.
 const calc = {
-  store: "0",
+  register: 0,
   operator: noop,
+  ops: {
+    [mult]: (lhs, rhs) => lhs * rhs,
+    [plus]: (lhs, rhs) => lhs + rhs,
+    [sub]: (lhs, rhs) => lhs - rhs,
+  },
+
+  store(val) {
+    this.register = parseInt(val, 10);
+  },
 
   clr() {
-    this.store = "0";
+    this.register = 0;
     this.operator = noop;
-    return this.store;
+    return String(this.register);
   },
 
   op(val) {
-    if (this.operator === noop) {
-      return;
+    // No-op won't match
+    const op_func = this.ops[this.operator];
+    if (!op_func) {
+      return String(this.register);
     }
 
-    let lhs = parseInt(this.store);
-    const rhs = parseInt(val);
-
-    switch (this.operator) {
-      case mult: {
-        lhs *= rhs;
-        break;
-      }
-      case sub: {
-        lhs -= rhs;
-        break;
-      }
-      case plus: {
-        lhs += rhs;
-        break;
-      }
-    }
-    this.store = `${lhs}`;
-    return this.store;
+    this.register = op_func(this.register, parseInt(val, 10));
+    return String(this.register);
   },
 
   toString() {
-    return `calc: store=[${this.store}], operator=${this.operator}`;
+    return `calc: register=[${this.register}], operator=${this.operator}`;
   },
 };
 
@@ -69,19 +63,27 @@ const operators = [mult, plus, sub];
 for (const operator of operators) {
   const button = document.querySelector(`.button-${operator}`);
   button.addEventListener("click", () => {
-    calc.store = calcOutput.textContent;
-    calc.operator = operator;
+    if (calc.operator === noop) {
+      calc.store(calcOutput.textContent);
+    } else {
+      calc.op(calcOutput.textContent);
+    }
     calcOutput.textContent = "0";
+    calc.operator = operator;
     console.log(`${operator}. ${calc}`);
   });
 }
 
+const equals = document.querySelector(`.button-equals`);
+equals.addEventListener("click", () => {
+  const val = calcOutput.textContent;
+  calcOutput.textContent = calc.op(val);
+  console.log(`equals: ${val} ${calc}`);
+});
+
 const back = document.querySelector(`.button-back`);
 back.addEventListener("click", () => {
-  calcOutput.textContent = calcOutput.textContent.slice(0, -1);
-  if (calcOutput.textContent.length === 0) {
-    calcOutput.textContent = "0";
-  }
+  calcOutput.textContent = calcOutput.textContent.slice(0, -1) || "0";
   console.log(`back. ${calc}`);
 });
 
@@ -91,14 +93,6 @@ clear.addEventListener("click", () => {
   console.log(`clear. ${calc}`);
 });
 
-const equals = document.querySelector(`.button-equals`);
-equals.addEventListener("click", () => {
-  // Push the second operand before calculating
-  const rhs = calcOutput.textContent;
-  calcOutput.textContent = calc.op(rhs);
-  console.log(`equals: ${rhs} ${calc}`);
-});
-
 // Initial state
-calcOutput.textContent = calc.store;
+calcOutput.textContent = calc.clr();
 console.log(`calc ready: ${calc}`);
