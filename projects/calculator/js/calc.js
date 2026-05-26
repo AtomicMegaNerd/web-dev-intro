@@ -1,15 +1,15 @@
 console.log("initializing calc");
 
-const noop = "noop";
-const mult = "mul";
-const sub = "sub";
-const plus = "add";
+const op_noop = "noop";
+const op_mul = "mul";
+const op_sub = "sub";
+const op_add = "add";
 
 // Calculator uses numbers internally, but it takes string arguments
 // from the page and returns string results to the page.
 const calc = {
   register: 0,
-  operator: noop,
+  operator: op_noop,
   ops: {
     mul: (lhs, rhs) => lhs * rhs,
     add: (lhs, rhs) => lhs + rhs,
@@ -22,7 +22,7 @@ const calc = {
 
   clr() {
     this.register = 0;
-    this.operator = noop;
+    this.operator = op_noop;
     return String(this.register);
   },
 
@@ -59,12 +59,12 @@ for (let ix = 0; ix <= 9; ix++) {
   });
 }
 
-// Register the standard operators
-const operators = [mult, plus, sub];
+// Register the standard operators that are connected to buttons
+const operators = [op_mul, op_add, op_sub];
 for (const operator of operators) {
   const button = document.querySelector(`.button-${operator}`);
   button.addEventListener("click", () => {
-    if (calc.operator === noop) {
+    if (calc.operator === op_noop) {
       calc.store(calcOutput.textContent);
     } else {
       calc.op(calcOutput.textContent);
@@ -77,6 +77,10 @@ for (const operator of operators) {
 
 const equals = document.querySelector(`.button-equals`);
 equals.addEventListener("click", () => {
+  // If equals is called with noop do nothing
+  if (calc.operator === op_noop) {
+    return;
+  }
   const val = calcOutput.textContent;
   calcOutput.textContent = calc.op(val);
   console.log(`equals: ${val} ${calc}`);
