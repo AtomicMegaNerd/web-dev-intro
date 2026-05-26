@@ -12,11 +12,19 @@ body {
   background-color: black;
 }
 
-.calc-output {
-  height: 3em;
-  font-size: 2em;
+.calc-output-container {
+  height: 1.5em;
+  font-size: 3em;
+  /* top left bottom right */
+  padding: 0 0.2em 0 0.2em;
   background-color: black;
   color: white;
+  display: flex;
+  align-items: center;
+  justify-content: right;
+}
+
+.calc-output {
 }
 
 .orange {
@@ -30,75 +38,75 @@ body {
 }
 
 .button-clear {
-  grid-area: "btn-clr";
+  grid-area: btn-clr;
 }
 
 .button-back {
-  grid-area: "btn-bak";
+  grid-area: btn-bak;
 }
 
 .button-div {
-  grid-area: "btn-div";
+  grid-area: btn-div;
 }
 
 .button-mul {
-  grid-area: "btn-mul";
+  grid-area: btn-mul;
 }
 
-.button-plus {
-  grid-area: "btn-pls";
+.button-add {
+  grid-area: btn-add;
 }
 
 .button-sub {
-  grid-area: "btn-sub";
+  grid-area: btn-sub;
 }
 
 .button-equals {
-  grid-area: "btn-equ";
+  grid-area: btn-equ;
 }
 
 .button-0 {
-  grid-area: "btn-000";
+  grid-area: btn-000;
 }
 
 .button-1 {
-  grid-area: "btn-001";
+  grid-area: btn-001;
 }
 
 .button-2 {
-  grid-area: "btn-002";
+  grid-area: btn-002;
 }
 
 .button-3 {
-  grid-area: "btn-003";
+  grid-area: btn-003;
 }
 
 .button-3 {
-  grid-area: "btn-003";
+  grid-area: btn-003;
 }
 
 .button-4 {
-  grid-area: "btn-004";
+  grid-area: btn-004;
 }
 
 .button-5 {
-  grid-area: "btn-005";
+  grid-area: btn-005;
 }
 
 .button-6 {
-  grid-area: "btn-006";
+  grid-area: btn-006;
 }
 
 .button-7 {
-  grid-area: "btn-007";
+  grid-area: btn-007;
 }
 
 .button-8 {
-  grid-area: "btn-008";
+  grid-area: btn-008;
 }
 
 .button-9 {
-  grid-area: "btn-009";
+  grid-area: btn-009;
 }
 
 .calc-button-container {
@@ -109,6 +117,6 @@ body {
     "btn-clr btn-clr btn-bak btn-div"
     "btn-007 btn-008 btn-009 btn-mul"
     "btn-004 btn-005 btn-006 btn-sub"
-    "btn-001 btn-002 btn-003 btn-pls"
+    "btn-001 btn-002 btn-003 btn-add"
     "btn-000 btn-000 btn-000 btn-equ";
 }
