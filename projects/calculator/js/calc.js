@@ -1,9 +1,7 @@
 console.log("initializing calc");
 
 const op_noop = "noop";
-const op_mul = "mul";
-const op_sub = "sub";
-const op_add = "add";
+const operators = ["mul", "add", "sub"];
 
 // Calculator uses numbers internally, but it takes string arguments
 // from the page and returns string results to the page. We are not implementing
@@ -68,7 +66,6 @@ for (let ix = 0; ix <= 9; ix++) {
 }
 
 // Register the standard operators that are connected to buttons
-const operators = [op_mul, op_add, op_sub];
 for (const operator of operators) {
   const button = document.querySelector(`.button-${operator}`);
   button.addEventListener("click", () => {
