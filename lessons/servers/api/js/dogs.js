@@ -24,6 +24,10 @@ const doFetch = () => {
         prevNode.replaceWith(img);
       }
       prevNode = img;
+    })
+    // This is how error handling works with promises
+    .catch((error) => {
+      console.log(`error calling our api ${error}`);
     });
 };
 
