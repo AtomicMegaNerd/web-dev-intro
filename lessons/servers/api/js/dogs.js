@@ -22,7 +22,6 @@ const doFetch = () => {
         prevNode.replaceWith(img);
       }
       prevNode = img;
-      console.log(`number of children: ${dogTarget.childNodes.length}`);
     });
 };
 
