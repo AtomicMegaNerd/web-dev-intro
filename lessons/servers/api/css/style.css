@@ -1,0 +1,60 @@
+* {
+  /* Include the border when measuring widths, content-box is the default */
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Helvetica Neue", "Arial", "sans-serif";
+  background-color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dog-container {
+  width: 600px;
+  background-color: slategrey;
+}
+
+.dog-header {
+  color: white;
+  background-color: slateblue;
+  padding: 1em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dog-h1 {
+  font: 1.25em;
+  margin: 0;
+}
+
+.dog-fetch {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1em;
+}
+
+.dog-btn {
+  width: 300px;
+  background-color: slateblue;
+  color: white;
+  border: none;
+  font-size: 1.5em;
+  border-radius: 10px;
+}
+
+.dog-target {
+  height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dog-img {
+  max-width: 500px;
+  max-height: 500px;
+  margin: 10px;
+}
