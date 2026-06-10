@@ -1,0 +1,38 @@
+* {
+  /* Include the border when measuring widths, content-box is the default */
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Helvetica Neue", "Arial", "sans-serif";
+}
+
+.game-main {
+  background-color: white;
+  display: grid;
+  align-contents: center;
+  justify-content: center;
+}
+
+.game-header {
+  text-align: center;
+  margin-bottom: 3em;
+  border-bottom: 0.15em solid black;
+}
+
+.game-area {
+  font-size: 2em;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: repeat(5, 1.5em);
+  margin-top: 0.3em;
+  gap: 0.3em;
+}
+
+.cell {
+  height: 1.5em;
+  width: 1.5em;
+  border: 0.1em solid #bbbbbb;
+}
