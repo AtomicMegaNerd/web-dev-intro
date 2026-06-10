@@ -54,4 +54,4 @@ const _doFetch2 = async (mgr) => {
   }
 };
 
-document.querySelector(".dog-btn").addEventListener("click", () => _doFetch(dogManager));
+document.querySelector(".dog-btn").addEventListener("click", () => _doFetch2(dogManager));
