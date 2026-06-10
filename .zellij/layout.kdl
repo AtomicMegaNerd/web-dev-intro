@@ -5,16 +5,19 @@ layout {
             plugin location="compact-bar"
         }
     }
-    tab name="vim" split_direction="vertical" {
+    tab name="neovim" split_direction="vertical" {
         pane command="nvim"
     }
-    tab name="shell" split_direction="vertical" {
-        pane command="fish"
+    tab name="lazygit" split_direction="vertical" {
+        pane command="lazygit"
     }
-    tab name="llm" split_direction="vertical" {
+    tab name="fish" split_direction="vertical" {
         pane command="fish"
     }
     tab name="live-server" split_direction="vertical" {
+        pane command="fish"
+    }
+    tab name="llm" split_direction="vertical" start_suspended=true {
         pane command="fish"
     }
 }
