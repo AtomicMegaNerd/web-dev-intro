@@ -34,5 +34,22 @@ body {
 .cell {
   height: 1.5em;
   width: 1.5em;
+  padding: 0.1em;
   border: 0.1em solid #bbbbbb;
+  text-align: center;
+}
+
+.exact-match {
+  background-color: #336633;
+  color: #ffffff;
+}
+
+.partial-match {
+  background-color: #aa8833;
+  color: #ffffff;
+}
+
+.no-match {
+  background-color: #888888;
+  color: #ffffff;
 }
