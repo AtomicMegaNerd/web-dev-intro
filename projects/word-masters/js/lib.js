@@ -59,6 +59,7 @@ console.log("ready to go...");
   while (true) {
     const cell = document.querySelector(`.game-cell-${gameState.currCell}`);
     console.log(`current cell is .game-cell-${gameState.currCell}`);
+
     // oxlint-disable-next-line no-await-in-loop
     const event = await getKeyFromCurrentCell(cell);
 

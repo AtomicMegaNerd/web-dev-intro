@@ -1,9 +1,13 @@
 # Frontend Masters Web Development Course
 
+---
+
 ## Introduction
 
 See [course site](https://btholt.github.io/complete-intro-to-web-dev-v3/). This is the repo that I
 created to save all of the work that I am doing for this course.
+
+---
 
 ## Tooling
 
@@ -23,17 +27,17 @@ This is the linter we use for the project.
 
 [https://github.com/htmlhint/HTMLHint](https://github.com/htmlhint/HTMLHint)
 
-### vscode-langservers-extracted
+### csskit
 
-This let's use use various LSP's for web development from Microsoft outside of VSCode:
+A new Rust powered CSS LSP, linter, formatter, etc. Still early days.
 
-[https://github.com/hrsh7th/vscode-langservers-extracted](https://github.com/hrsh7th/vscode-langservers-extracted)
+[https://github.com/csskit/csskit](https://github.com/csskit/csskit)
 
 ### live-server
 
-Run a small web-server from the command line.
+Run a small web-server from the command line (we use the Rust version):
 
-[https://github.com/tapio/live-server](https://github.com/tapio/live-server)
+[https://github.com/lomirus/live-server](https://github.com/lomirus/live-server)
 
 ### Typescript Go (TypeScript 7)
 
@@ -59,6 +63,8 @@ Linter for Markdown files.
 
 [https://github.com/DavidAnson/markdownlint-cli2](https://github.com/DavidAnson/markdownlint-cli2)
 
+---
+
 ## NodeJS
 
 NodeJS is the runtime we are using for this course. We turn on module support to make this use
@@ -69,6 +75,8 @@ strict mode for safety.
   "type": "module"
 }
 ```
+
+---
 
 ## Setup
 
@@ -93,7 +101,34 @@ mise setup
 
 The last command setup will setup pre-commit
 
-## Reference Links
+---
+
+## Running Live server
+
+In `mise.toml` set the `CURR_PROJECT` environment variable to the root of the current project in
+this repo that you are working on:
+
+```toml
+[env]
+CURR_PROJECT="./projects/word-masters"
+```
+
+_NOTE_ Always set CURR_PROJECT to the root directory of each project that contains `index.html` and
+the other files. Never set it to the index file or other resources like CSS or Javascript will not
+load correctly.
+
+Then from the command-line you can use mise to run the app (see the custom `serve` task in the
+`mise.toml` file)
+
+```fish
+mise serve
+```
+
+---
+
+## Lessons
+
+All the lessons broken down by course section:
 
 ### HTML and CSS
 
@@ -106,3 +141,23 @@ The last command setup will setup pre-commit
 
 - [JS Reference](./lessons/js/README.md)
 - [JS Basics](./lessons/js/basics/README.md)
+- [JS Objects](./lessons/js/objects/README.md)
+
+### Front-End Development
+
+- [The DOM](./lessons/front-end/dom/README.md)
+- [Events](./lessons/front-end/events/README.md)
+
+### Talking to Servers
+
+- [API's](./lessons/servers/api/README.md)
+- [JSON](./lessons/servers/json/README.md)
+
+## Projects
+
+These are the exercises that are part of the course:
+
+- [RCD Blog](./projects/blog/README.md)
+- [Coffeee Masters](./projects/coffee/README.md)
+- [Calculator](./projects/calculator/README.md)
+- [Word Masters](./projects/word-masters/README.md)

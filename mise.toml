@@ -8,17 +8,30 @@ pre-commit = "latest"
 # emmet-language-server
 "npm:@olrtg/emmet-language-server" = "latest"
 
-# live-server is for hot-reloading static files
-"npm:live-server" = "latest"
-
 # HTML linter
 "npm:htmlhint" = "latest"
 
 # This is the new Typescript Go fork which even supports LSP
-"npm:@typescript/native-preview" = "latest"
+# "npm:typescript/native-preview" = "latest"
 
 # New Rust based CSS LSP
 "npm:csskit" = "latest"
+
+# The Rust based live-server is safer and faster
+"cargo:live-server" = "latest"
+
+[env]
+CURR_PROJECT = "./projects/word-masters"
+
+[tools.rust]
+version = "stable"
+components = ["clippy", "rustfmt"]
+
+[tasks.serve]
+description = "Run live-server against $CURR_PROJECT"
+run = """
+live-server --host 127.0.0.1 --port 8080 $CURR_PROJECT
+"""
 
 [tasks.setup]
 description = "Generate .pre-commit-config.yaml and install git hooks"
