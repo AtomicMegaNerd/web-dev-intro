@@ -25,8 +25,8 @@ const gameState = {
     const letter = ltr.toUpperCase();
     this.cell().textContent = letter;
 
-    // If we are not in the last column append
-    if (!this.guessReady()) {
+    // If the guess buffer is not full append otherwise replace
+    if (this.guess.length !== wordLen) {
       this.guess += letter;
     } else {
       this.guess = this.guess.slice(0, -1) + letter;
@@ -38,12 +38,8 @@ const gameState = {
     }
   },
 
-  guessReady() {
-    return this.guess.length === wordLen;
-  },
-
   backspace() {
-    if (this.col > 0 && !this.guessReady()) {
+    if (this.col > 0 && this.guess.length !== wordLen) {
       this.col--;
     }
     this.cell().textContent = "";
@@ -51,57 +47,63 @@ const gameState = {
   },
 
   async checkGuess() {
-    // We can only check the guess if we are on the last column
-    if (!this.guessReady()) {
-      console.log(`Guess not yet ${wordLen} letters long`);
+    // We can only check the guess if it has required # of letters
+    if (this.guess.length !== wordLen) {
       return;
     }
 
+    // If the word is not valid we don't submit it
     if (!(await this.validateWord())) {
-      console.log("Invalid word");
       return;
     }
 
+    // Check for exact and partial matches
     this.checkMatchingLetters();
 
     if (this.guess === this.word) {
-      console.log("*** WIN!!!! ***");
-      this.gameOver = true;
+      this.victory();
       return;
     }
 
     if (this.row === numGuesses - 1) {
-      console.log("*** LOSE!!!! ***");
-      this.gameOver = true;
-      return;
+      this.defeat();
     }
 
-    console.log("Incorrect guess - on to next row");
     this.col = 0;
     this.row++;
     this.guess = "";
   },
 
+  victory() {
+    document.querySelector(".game-title").classList.add("victory-animation");
+    alert(`The word was ${this.word}, you won! Congratulations!`);
+    this.gameOver = true;
+  },
+
+  defeat() {
+    alert(`The word was ${this.word}. Sorry you lost.`);
+    this.gameOver = true;
+  },
+
+  // Get the gameCell element
   cell(col = this.col, row = this.row) {
-    console.log(`Getting cell ${col + row * wordLen}`);
     return document.querySelector(`.game-cell-${col + row * wordLen}`);
   },
 
-  getWordMap() {
+  // This maps the frequency of each present letter in our word
+  buildWordFreqMap() {
     // This map has the number of times each letter appears
     const wordMap = {};
     for (const ch of this.word) {
-      if (!wordMap[ch]) {
-        wordMap[ch] = 1;
-      } else {
-        wordMap[ch] += 1;
-      }
+      wordMap[ch] = (wordMap[ch] || 0) + 1;
     }
     return wordMap;
   },
 
   checkMatchingLetters() {
-    const wordMap = this.getWordMap();
+    const wordMap = this.buildWordFreqMap();
+
+    // First pass, we check for exact matches
     for (let ix = 0; ix < this.guess.length; ix++) {
       const letter = this.guess[ix];
       if (this.word[ix] === letter) {
@@ -110,6 +112,7 @@ const gameState = {
       }
     }
 
+    // Second pass, we check for partial matches
     for (let ix = 0; ix < this.guess.length; ix++) {
       const letter = this.guess[ix];
       const cell = this.cell(ix, this.row);
@@ -170,25 +173,27 @@ document.addEventListener("keydown", (event) => {
   if (gameState.gameOver) {
     return;
   }
+
+  // linter changed this form const key = event.key;
   const { key } = event;
   const letter = key.toUpperCase();
   const isLetter = /^[A-Z]$/.test(letter);
 
-  const keyActions = {
-    Backspace: () => gameState.backspace(),
-    Enter: () => gameState.checkGuess(),
-  };
-
-  if (keyActions[key]) {
-    keyActions[key]();
-    return;
+  switch (key) {
+    case "Backspace": {
+      gameState.backspace();
+      break;
+    }
+    case "Enter": {
+      gameState.checkGuess();
+      break;
+    }
+    default: {
+      if (!isLetter) {
+        event.preventDefault();
+        return;
+      }
+      gameState.addLetter(letter);
+    }
   }
-
-  if (!isLetter) {
-    event.preventDefault();
-    return;
-  }
-  gameState.addLetter(letter);
-
-  console.log(gameState.str());
 });

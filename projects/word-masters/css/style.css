@@ -53,3 +53,63 @@ body {
   background-color: #888888;
   color: #ffffff;
 }
+
+@keyframes rainbow {
+  100%,
+  0% {
+    color: rgb(255, 0, 0);
+  }
+  8% {
+    color: rgb(255, 127, 0);
+  }
+  16% {
+    color: rgb(255, 255, 0);
+  }
+  25% {
+    color: rgb(127, 255, 0);
+  }
+  33% {
+    color: rgb(0, 255, 0);
+  }
+  41% {
+    color: rgb(0, 255, 127);
+  }
+  50% {
+    color: rgb(0, 255, 255);
+  }
+  58% {
+    color: rgb(0, 127, 255);
+  }
+  66% {
+    color: rgb(0, 0, 255);
+  }
+  75% {
+    color: rgb(127, 0, 255);
+  }
+  83% {
+    color: rgb(255, 0, 255);
+  }
+  91% {
+    color: rgb(255, 0, 127);
+  }
+}
+
+.victory-animation {
+  animation: rainbow 4s infinite linear;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.refresh-icon {
+  width: 2em;
+  height: 2em;
+  animation: spin 0.5s infinite linear;
+  background-image: url("./img/circle-arrow-icon.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
