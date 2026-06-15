@@ -14,8 +14,7 @@ const gameState = {
   row: 0,
   guess: "",
   gameOver: false,
-  loading: document.querySelector(".game-loading"),
-  loadingIcon: undefined,
+  loading: document.querySelector(".refresh-icon"),
 
   // This starts the game fresh
   async initGame() {
@@ -142,11 +141,8 @@ const gameState = {
   },
 
   async fetchJSON(url, options) {
-    const refreshIcon = document.createElement("span");
-    refreshIcon.className = "refresh-icon";
-    this.loading.appendChild(refreshIcon);
-
     try {
+      this.loading.classList.remove("hidden");
       const resp = await fetch(url, options);
       if (!resp.ok) {
         throw new Error(`${resp.status} ${resp.statusText}`);
@@ -156,7 +152,7 @@ const gameState = {
       console.log(`error calling our api ${error.message}`);
       throw error;
     } finally {
-      this.loading.removeChild(refreshIcon);
+      this.loading.classList.add("hidden");
     }
   },
 
