@@ -12,7 +12,6 @@ body {
 .game-main {
   background-color: white;
   display: grid;
-  align-contents: center;
   justify-content: center;
 }
 
@@ -81,7 +80,7 @@ body {
   color: #ffffff;
 }
 
-.game-victory-animation {
+.victory-animation {
   animation: rainbow 4s infinite linear;
 }
 

@@ -180,6 +180,9 @@ const gameState = {
 
     const respJson = await this.fetchJSON(validateWordURL, {
       method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
       body: JSON.stringify({ word: this.guess }),
     });
     if (respJson) {
