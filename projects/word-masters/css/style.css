@@ -35,7 +35,7 @@ body {
 .refresh-icon {
   height: 1.75em;
   width: 1.75em;
-  animation: spin 1s once linear;
+  animation: spin 0.5s 1 linear;
   background-image: url("../img/circle-arrow-icon.svg");
   background-size: contain;
   background-repeat: no-repeat;
