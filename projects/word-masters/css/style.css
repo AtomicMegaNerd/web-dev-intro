@@ -17,7 +17,6 @@ body {
 
 .game-header {
   display: flex;
-  align-contents: center;
   justify-content: center;
 }
 
@@ -26,7 +25,6 @@ body {
   margin-bottom: 1em;
   border-bottom: 0.15em solid black;
   display: flex;
-  align-contents: center;
   justify-content: center;
 }
 
