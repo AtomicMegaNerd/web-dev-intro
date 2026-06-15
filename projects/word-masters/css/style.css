@@ -7,6 +7,8 @@ body {
   font-family: "Helvetica Neue", "Arial", "sans-serif";
 }
 
+/* Main containers */
+
 .game-main {
   background-color: white;
   display: grid;
@@ -15,19 +17,44 @@ body {
 }
 
 .game-header {
-  text-align: center;
-  margin-bottom: 3em;
+  display: flex;
+  align-contents: center;
+  justify-content: center;
+}
+
+.game-loading {
+  height: 3em;
+  margin-bottom: 1em;
   border-bottom: 0.15em solid black;
+  display: flex;
+  align-contents: center;
+  justify-content: center;
 }
 
 .game-area {
   font-size: 2em;
 }
 
+.refresh-icon {
+  height: 1.75em;
+  width: 1.75em;
+  animation: spin 1s once linear;
+  background-image: url("../img/circle-arrow-icon.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.wrong-answer {
+  animation: flash-wrong 0.5s 1 linear;
+}
+
 .row {
   display: grid;
+  border: 0.1em solid #ffffff;
   grid-template-columns: repeat(5, 1.5em);
-  margin-top: 0.3em;
+  margin: 0.1em;
+  padding: 0.1em;
   gap: 0.3em;
 }
 
@@ -53,6 +80,12 @@ body {
   background-color: #888888;
   color: #ffffff;
 }
+
+.game-victory-animation {
+  animation: rainbow 4s infinite linear;
+}
+
+/* Animation Data */
 
 @keyframes rainbow {
   100%,
@@ -94,22 +127,21 @@ body {
   }
 }
 
-.victory-animation {
-  animation: rainbow 4s infinite linear;
+@keyframes flash-wrong {
+  100%,
+  0% {
+    border-color: rgb(255, 255, 255);
+  }
+  50% {
+    border-color: rgb(255, 100, 100);
+  }
+  100% {
+    border-color: rgb(255, 255, 255);
+  }
 }
 
 @keyframes spin {
   to {
     transform: rotate(360deg);
   }
-}
-
-.refresh-icon {
-  width: 2em;
-  height: 2em;
-  animation: spin 0.5s infinite linear;
-  background-image: url("./img/circle-arrow-icon.svg");
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
 }

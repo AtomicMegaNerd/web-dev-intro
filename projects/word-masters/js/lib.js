@@ -5,12 +5,17 @@ const validateWordURL = "https://words.dev-apis.com/validate-word";
 const wordLen = 5;
 const numGuesses = 6;
 
+// Sleep function
+const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
 const gameState = {
   word: "",
   col: 0,
   row: 0,
   guess: "",
   gameOver: false,
+  loading: document.querySelector(".game-loading"),
+  loadingIcon: undefined,
 
   // This starts the game fresh
   async initGame() {
@@ -23,7 +28,7 @@ const gameState = {
 
   addLetter(ltr) {
     const letter = ltr.toUpperCase();
-    this.cell().textContent = letter;
+    this.currentGameCell().textContent = letter;
 
     // If the guess buffer is not full append otherwise replace
     if (this.guess.length !== wordLen) {
@@ -42,18 +47,20 @@ const gameState = {
     if (this.col > 0 && this.guess.length !== wordLen) {
       this.col--;
     }
-    this.cell().textContent = "";
+    this.currentGameCell().textContent = "";
     this.guess = this.guess.slice(0, -1);
   },
 
   async checkGuess() {
     // We can only check the guess if it has required # of letters
     if (this.guess.length !== wordLen) {
+      this.flashWrong();
       return;
     }
 
     // If the word is not valid we don't submit it
     if (!(await this.validateWord())) {
+      this.flashWrong();
       return;
     }
 
@@ -86,8 +93,13 @@ const gameState = {
   },
 
   // Get the gameCell element
-  cell(col = this.col, row = this.row) {
+  currentGameCell(col = this.col, row = this.row) {
     return document.querySelector(`.game-cell-${col + row * wordLen}`);
+  },
+
+  // Get the current gameRow element
+  currentGameRow(row = this.row) {
+    return document.querySelector(`.game-row-${row}`);
   },
 
   // This maps the frequency of each present letter in our word
@@ -107,7 +119,7 @@ const gameState = {
     for (let ix = 0; ix < this.guess.length; ix++) {
       const letter = this.guess[ix];
       if (this.word[ix] === letter) {
-        this.cell(ix, this.row).classList.add("exact-match");
+        this.currentGameCell(ix, this.row).classList.add("exact-match");
         wordMap[letter]--;
       }
     }
@@ -115,7 +127,7 @@ const gameState = {
     // Second pass, we check for partial matches
     for (let ix = 0; ix < this.guess.length; ix++) {
       const letter = this.guess[ix];
-      const cell = this.cell(ix, this.row);
+      const cell = this.currentGameCell(ix, this.row);
       // Skip exact matches
       if (this.word[ix] !== letter) {
         // If partial match
@@ -130,6 +142,10 @@ const gameState = {
   },
 
   async fetchJSON(url, options) {
+    const refreshIcon = document.createElement("span");
+    refreshIcon.className = "refresh-icon";
+    this.loading.appendChild(refreshIcon);
+
     try {
       const resp = await fetch(url, options);
       if (!resp.ok) {
@@ -139,6 +155,8 @@ const gameState = {
     } catch (error) {
       console.log(`error calling our api ${error.message}`);
       throw error;
+    } finally {
+      this.loading.removeChild(refreshIcon);
     }
   },
 
@@ -149,9 +167,14 @@ const gameState = {
     }
   },
 
+  async flashWrong() {
+    this.currentGameRow().classList.add("wrong-answer");
+    await sleep(500);
+    this.currentGameRow().classList.remove("wrong-answer");
+  },
+
   async validateWord() {
     if (this.guess.length !== wordLen) {
-      console.log(`All guesses must be ${wordLen} long`);
       return;
     }
 
