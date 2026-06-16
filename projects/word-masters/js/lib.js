@@ -5,60 +5,51 @@ const validateWordURL = "https://words.dev-apis.com/validate-word";
 const wordLen = 5;
 const numGuesses = 6;
 
-// Sleep function
-const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+const title = document.querySelector(".game-title");
+const loading = document.querySelector(".refresh-icon");
 
-const gameState = {
+const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+const getCell = (col, row) => document.querySelector(`.game-cell-${col + row * wordLen}`);
+const setCell = (col, row, text) => (getCell(col, row).textContent = text);
+const gameRow = (row) => document.querySelector(`.game-row-${row}`);
+
+const game = {
   word: "",
-  col: 0,
-  row: 0,
   guess: "",
+  row: 0,
   gameOver: false,
-  loading: document.querySelector(".refresh-icon"),
 
   // This starts the game fresh
   async initGame() {
-    await this.fetchWord();
-    this.col = 0;
-    this.row = 0;
+    this.word = await fetchWord();
     this.guess = "";
+    this.row = 0;
     this.gameOver = false;
   },
 
-  addLetter(ltr) {
-    const letter = ltr.toUpperCase();
-    this.currentGameCell().textContent = letter;
-
-    // If the guess buffer is not full append otherwise replace
+  addLetter(letter) {
     if (this.guess.length !== wordLen) {
+      setCell(this.guess.length, this.row, letter);
       this.guess += letter;
     } else {
       this.guess = this.guess.slice(0, -1) + letter;
     }
-
-    // Only increment to the next row if we are not already on the last column
-    if (this.col < wordLen - 1) {
-      this.col++;
-    }
   },
 
   backspace() {
-    if (this.col > 0 && this.guess.length !== wordLen) {
-      this.col--;
+    if (this.guess.length !== 0) {
+      this.guess = this.guess.slice(0, -1);
+      setCell(this.guess.length, this.row, "");
     }
-    this.currentGameCell().textContent = "";
-    this.guess = this.guess.slice(0, -1);
   },
 
   async checkGuess() {
-    // We can only check the guess if it has required # of letters
     if (this.guess.length !== wordLen) {
       this.flashWrong();
       return;
     }
 
-    // If the word is not valid we don't submit it
-    if (!(await this.validateWord())) {
+    if (!(await validateWord(this.guess))) {
       this.flashWrong();
       return;
     }
@@ -73,52 +64,33 @@ const gameState = {
 
     if (this.row === numGuesses - 1) {
       this.defeat();
+      return;
     }
 
-    this.col = 0;
-    this.row++;
     this.guess = "";
+    this.row++;
   },
 
   victory() {
-    document.querySelector(".game-title").classList.add("victory-animation");
+    title.classList.add("victory-animation");
     alert(`The word was ${this.word}, you won! Congratulations!`);
     this.gameOver = true;
   },
 
   defeat() {
-    alert(`The word was ${this.word}. Sorry you lost.`);
+    alert(`The word was ${this.word}.Sorry you lost.`);
     this.gameOver = true;
   },
 
-  // Get the gameCell element
-  currentGameCell(col = this.col, row = this.row) {
-    return document.querySelector(`.game-cell-${col + row * wordLen}`);
-  },
-
-  // Get the current gameRow element
-  currentGameRow(row = this.row) {
-    return document.querySelector(`.game-row-${row}`);
-  },
-
-  // This maps the frequency of each present letter in our word
-  buildWordFreqMap() {
-    // This map has the number of times each letter appears
-    const wordMap = {};
-    for (const ch of this.word) {
-      wordMap[ch] = (wordMap[ch] || 0) + 1;
-    }
-    return wordMap;
-  },
-
   checkMatchingLetters() {
-    const wordMap = this.buildWordFreqMap();
+    // Build our map of each letter to the number of times it occurs
+    const wordMap = buildWordMap(this.word);
 
     // First pass, we check for exact matches
     for (let ix = 0; ix < this.guess.length; ix++) {
       const letter = this.guess[ix];
       if (this.word[ix] === letter) {
-        this.currentGameCell(ix, this.row).classList.add("exact-match");
+        getCell(ix, this.row).classList.add("exact-match");
         wordMap[letter]--;
       }
     }
@@ -126,7 +98,7 @@ const gameState = {
     // Second pass, we check for partial matches
     for (let ix = 0; ix < this.guess.length; ix++) {
       const letter = this.guess[ix];
-      const cell = this.currentGameCell(ix, this.row);
+      const cell = getCell(ix, this.row);
       // Skip exact matches
       if (this.word[ix] !== letter) {
         // If partial match
@@ -140,62 +112,61 @@ const gameState = {
     }
   },
 
-  async fetchJSON(url, options) {
-    try {
-      this.loading.classList.remove("hidden");
-      const resp = await fetch(url, options);
-      if (!resp.ok) {
-        throw new Error(`${resp.status} ${resp.statusText}`);
-      }
-      return await resp.json();
-    } catch (error) {
-      console.log(`error calling our api ${error.message}`);
-      throw error;
-    } finally {
-      this.loading.classList.add("hidden");
-    }
-  },
-
-  async fetchWord() {
-    const respJson = await this.fetchJSON(getWordURL);
-    if (respJson) {
-      this.word = respJson.word.toUpperCase();
-    }
-  },
-
   async flashWrong() {
-    this.currentGameRow().classList.add("wrong-answer");
+    gameRow(this.row).classList.add("wrong-answer");
     await sleep(500);
-    this.currentGameRow().classList.remove("wrong-answer");
-  },
-
-  async validateWord() {
-    if (this.guess.length !== wordLen) {
-      return;
-    }
-
-    const respJson = await this.fetchJSON(validateWordURL, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ word: this.guess }),
-    });
-    if (respJson) {
-      return respJson.validWord;
-    }
+    gameRow(this.row).classList.remove("wrong-answer");
   },
 };
 
+const buildWordMap = (word) => {
+  const wordMap = {};
+  for (const ch of word) {
+    wordMap[ch] = (wordMap[ch] || 0) + 1;
+  }
+  return wordMap;
+};
+
+const fetchWord = async () => {
+  const { word } = await fetchJSON(getWordURL);
+  return word.toUpperCase();
+};
+
+const validateWord = async (word) => {
+  if (word.length !== wordLen) {
+    return;
+  }
+  const { validWord } = await fetchJSON(validateWordURL, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ word }),
+  });
+  return validWord;
+};
+
+const fetchJSON = async (url, options) => {
+  try {
+    loading.classList.remove("hidden");
+    const resp = await fetch(url, options);
+    if (!resp.ok) {
+      throw new Error(`${resp.status} ${resp.statusText}`);
+    }
+    return await resp.json();
+  } catch (error) {
+    console.log(`error calling our api ${error.message}`);
+    throw error;
+  } finally {
+    loading.classList.add("hidden");
+  }
+};
+
 // Init the state of the game
-gameState.initGame();
+game.initGame();
 
 // Register our event listener
 document.addEventListener("keydown", (event) => {
-  if (gameState.gameOver) {
-    return;
-  }
-
   // linter changed this form const key = event.key;
   const { key } = event;
   const letter = key.toUpperCase();
@@ -203,11 +174,11 @@ document.addEventListener("keydown", (event) => {
 
   switch (key) {
     case "Backspace": {
-      gameState.backspace();
+      game.backspace();
       break;
     }
     case "Enter": {
-      gameState.checkGuess();
+      game.checkGuess();
       break;
     }
     default: {
@@ -215,7 +186,7 @@ document.addEventListener("keydown", (event) => {
         event.preventDefault();
         return;
       }
-      gameState.addLetter(letter);
+      game.addLetter(letter);
     }
   }
 });

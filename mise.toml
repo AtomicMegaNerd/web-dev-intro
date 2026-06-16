@@ -1,7 +1,7 @@
 [tools]
 node = "latest"
 oxfmt = "latest"
-oxlint = "latest"
+biome = "latest"
 markdownlint-cli2 = "latest"
 pre-commit = "latest"
 
@@ -13,9 +13,6 @@ pre-commit = "latest"
 
 # This is the new Typescript Go fork which even supports LSP
 # "npm:typescript/native-preview" = "latest"
-
-# New Rust based CSS LSP
-"npm:csskit" = "latest"
 
 # The Rust based live-server is safer and faster
 "cargo:live-server" = "latest"
@@ -40,11 +37,10 @@ cat > .pre-commit-config.yaml << 'EOF'
 repos:
   - repo: local
     hooks:
-      - id: oxlint
-        name: oxlint
+      - id: biome
+        name: biome
         language: system
-        entry: oxlint
-        args: ["."]
+        entry: biome
         pass_filenames: false
 
       - id: oxfmt
