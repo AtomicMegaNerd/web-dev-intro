@@ -7,9 +7,18 @@ const title = document.querySelector(".game-title");
 const loading = document.querySelector(".refresh-icon");
 
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+// Cells
 const getCell = (col, row) => document.querySelector(`.game-cell-${col + row * wordLen}`);
 const setCell = (col, row, text) => (getCell(col, row).textContent = text);
-const gameRow = (row) => document.querySelector(`.game-row-${row}`);
+
+// Rows
+const flashWrong = async (row) => {
+  const gameRow = document.querySelector(`.game-row-${row}`);
+  gameRow.classList.add("wrong-answer");
+  await sleep(500);
+  gameRow.classList.remove("wrong-answer");
+};
 
 const game = {
   word: "",
@@ -43,12 +52,12 @@ const game = {
 
   async checkGuess() {
     if (this.guess.length !== wordLen) {
-      this.flashWrong();
+      flashWrong(this.row);
       return;
     }
 
     if (!(await validateWord(this.guess))) {
-      this.flashWrong();
+      flashWrong(this.row);
       return;
     }
 
@@ -108,12 +117,6 @@ const game = {
         }
       }
     }
-  },
-
-  async flashWrong() {
-    gameRow(this.row).classList.add("wrong-answer");
-    await sleep(500);
-    gameRow(this.row).classList.remove("wrong-answer");
   },
 };
 
