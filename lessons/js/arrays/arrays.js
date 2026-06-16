@@ -22,7 +22,9 @@ for (let ix = 0; ix < days.length; ix++) {
 
 // Example: forEach
 console.log("\nforEach");
-days.forEach((day) => console.log(day));
+days.forEach((day) => {
+  console.log(day);
+});
 
 // Example: for...of
 console.log("\nfor...on");

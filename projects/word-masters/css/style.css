@@ -4,7 +4,7 @@
 }
 
 body {
-  font-family: "Helvetica Neue", "Arial", "sans-serif";
+  font-family: "Helvetica Neue", Arial, sans-serif;
   color: #333333;
   margin: 0;
   padding: 0;
@@ -132,7 +132,6 @@ body {
 }
 
 @keyframes flash-wrong {
-  100%,
   0% {
     border-color: rgb(255, 255, 255);
   }

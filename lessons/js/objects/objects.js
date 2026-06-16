@@ -18,7 +18,7 @@ console.log(person);
 
 // Accessing properties
 console.log(person.name); // More common
-console.log(person["name"]);
+console.log(person.name);
 
 // This will be undefined :-)
 console.log(person.doesNotExit);

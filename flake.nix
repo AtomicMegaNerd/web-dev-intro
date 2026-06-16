@@ -65,19 +65,7 @@
                 enable = true;
                 name = "oxfmt";
                 entry = "oxfmt .";
-                pass_filenames = false;
-              };
-              oxlint = {
-                enable = true;
-                name = "oxlint";
-                entry = "oxlint .";
-                pass_filenames = false;
-              };
-              htmlhint = {
-                enable = true;
-                name = "htmlhint";
-                entry = "${pkgs.htmlhint}/bin/htmlhint";
-                files = "\\.html$";
+                files = "\\.md$";
               };
               markdownlint = {
                 enable = true;
@@ -107,15 +95,12 @@
             inherit (self.checks.${system}.pre-commit-check) shellHook;
             packages = [
               pkgs.emmet-language-server
-              pkgs.htmlhint
               pkgs.live-server
               pkgs.markdownlint-cli2
               pkgs.nil
               pkgs.nixfmt
               pkgs.oxfmt
-              pkgs.oxlint
               pkgs.typescript-go
-              pkgs.vscode-langservers-extracted
               pkgs.bash-language-server
             ];
           };

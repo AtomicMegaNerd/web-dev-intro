@@ -4,7 +4,7 @@
 }
 
 body {
-  font-family: "Helvetica Neue", "Arial", "sans-serif";
+  font-family: "Helvetica Neue", Arial, sans-serif;
 }
 
 .calc-main {
@@ -22,9 +22,6 @@ body {
   display: flex;
   align-items: center;
   justify-content: right;
-}
-
-.calc-output {
 }
 
 .orange {

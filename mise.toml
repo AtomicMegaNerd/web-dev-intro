@@ -8,9 +8,6 @@ pre-commit = "latest"
 # emmet-language-server
 "npm:@olrtg/emmet-language-server" = "latest"
 
-# HTML linter
-"npm:htmlhint" = "latest"
-
 # This is the new Typescript Go fork which even supports LSP
 # "npm:typescript/native-preview" = "latest"
 
@@ -47,6 +44,7 @@ repos:
         name: oxfmt
         language: system
         entry: oxfmt
+        types: [markdown]
         args: ["."]
         pass_filenames: false
 
@@ -55,12 +53,6 @@ repos:
         language: system
         entry: markdownlint-cli2
         types: [markdown]
-
-      - id: htmlhint
-        name: htmlhint
-        language: system
-        entry: htmlhint
-        types: [html]
 EOF
 pre-commit install
 """

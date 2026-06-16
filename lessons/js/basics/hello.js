@@ -1,9 +1,3 @@
-// oxlint-disable capitalized-comments
-// oxlint-disable func-names
-// oxlint-disable arrow-body-style
-// oxlint-disable id-length
-// oxlint-disable func-style
-//
 const greeting = "Hello World!";
 
 const firstName = "Chris";
@@ -61,9 +55,7 @@ function add(x, y) {
 }
 
 // Another syntax
-const mul = function (x, y) {
-  return x * y;
-};
+const mul = (x, y) => x * y;
 
 // Yet another syntax
 const div = (x, y) => {

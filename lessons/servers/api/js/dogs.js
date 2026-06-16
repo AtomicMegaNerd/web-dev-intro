@@ -1,5 +1,3 @@
-// oxlint-disable no-underscore-dangle
-
 const dogUrl = "https://dog.ceo/api/breeds/image/random";
 const dogTarget = document.querySelector(".dog-target");
 const dogManager = { prevNode: undefined };

@@ -27,12 +27,6 @@ This is the linter we use for the project.
 
 [https://github.com/htmlhint/HTMLHint](https://github.com/htmlhint/HTMLHint)
 
-### csskit
-
-A new Rust powered CSS LSP, linter, formatter, etc. Still early days.
-
-[https://github.com/csskit/csskit](https://github.com/csskit/csskit)
-
 ### live-server
 
 Run a small web-server from the command line (we use the Rust version):
@@ -47,15 +41,15 @@ In preview at the time I started this project. This has built-in LSP which is aw
 
 ### oxfmt
 
-Formatter for web development.
+Formatter for Markdown
 
 [https://github.com/oxc-project/oxc](https://github.com/oxc-project/oxc)
 
-### oxlint
+### biome
 
-Fast linter for JavaScript and TypeScript.
+LSP for web development.
 
-[https://oxc.rs/docs/guide/usage/linter](https://oxc.rs/docs/guide/usage/linter)
+[https://biomejs.dev/](https://biomejs.dev/)
 
 ### markdownlint-cli2
 

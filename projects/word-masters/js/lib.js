@@ -1,5 +1,3 @@
-// oxlint-disable max-statements
-
 const getWordURL = "https://words.dev-apis.com/word-of-the-day";
 const validateWordURL = "https://words.dev-apis.com/validate-word";
 const wordLen = 5;
