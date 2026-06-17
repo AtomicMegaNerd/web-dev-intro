@@ -1,0 +1,14 @@
+{
+  "name": "using-libraries",
+  "version": "1.0.0",
+  "description": "[Course Info on 3rd Party Libs](https://btholt.github.io/complete-intro-to-web-dev-v3/lessons/other-stuff-you-should-know/using-third-party-libraries)",
+  "license": "ISC",
+  "author": "Chris Dunphy",
+  "type": "module",
+  "dependencies": {
+    "popmotion": "^11.0.5"
+  },
+  "devDependencies": {
+    "parcel": "^2.16.4"
+  }
+}

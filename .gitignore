@@ -2,4 +2,8 @@
 **.DS_Store
 .pre-commit-config.yaml
 .direnv
+**/node_modules
 node_modules
+**/.parcel-cache
+dist
+

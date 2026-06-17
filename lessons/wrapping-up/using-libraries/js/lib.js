@@ -1,5 +1,7 @@
+import { animate } from "popmotion";
+
 const ball = document.querySelector(".ball");
-popmotion.animate({
+animate({
   from: "0px",
   to: "100px",
   repeat: Infinity,
